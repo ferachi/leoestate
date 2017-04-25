@@ -1,0 +1,1 @@
+#Collect static directory
