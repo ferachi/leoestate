@@ -1,0 +1,161 @@
+.search-component{
+    background-color: ghostwhite;
+    border : 1px solid gainsboro;
+    min-height:70px;
+    padding:15px 0px  10px 0px;
+}
+.search-component #advBtn{
+    /*margin-top:20px;*/
+}
+.search-component .searchBtn{
+    padding: 5px 10px;
+    background-color: coral;
+    color: white;
+    border-radius: 3px;
+    cursor:pointer;
+    margin-top:5px;
+}
+.property-palette-component .thumbnail{
+    background-color: whitesmoke;
+    padding:0px 5px;
+    cursor:pointer;
+    margin:5px 0px;
+}
+
+.property-palette-component .title{
+    font-weight: bold;
+}
+
+.property-palette-component .buy{
+    color: green;
+}
+
+.property-palette-component .rent{
+    color: cadetblue;
+}
+
+.property-palette-component .price{
+    color: firebrick;
+}
+
+.property-summary-component .thumbnail{
+    background-color: white;
+    padding:0px 10px;
+    margin:5px 0px;
+}
+
+.search-pane-component label{
+    font-weight: 400;
+    /*color: cadetblue;*/
+    /*font-size: 1.2em;*/
+}
+
+.search-pane-component .search-field{
+    margin: 15px 0px;
+    padding : 1px 5px;
+}
+.search-pane-component .range-field{
+    margin-top: 15px;
+    /*padding : 1px 5px;*/
+}
+.search-pane-component .search-field label{
+    /*color:cadetblue;*/
+    font-weight:bold;
+    font-size: 1.0em;
+}
+
+.search-pane-component .search-field label.val{
+    color:coral;
+    font-weight: 400;
+}
+
+.search-pane-component .search-field-extra{
+    padding:0px 10px 10px 10px;
+    border-radius: 4px;
+}
+
+.search-pane-component .search-field-extra hr{
+    margin:5px 0px 7px 0px;
+}
+
+.search-pane-component .search-field-extra h5{
+    margin:10px 0px 0px 0px;
+    color: cadetblue;
+}
+
+.search-pane-component .fields{
+    display:flex;
+    justify-content: space-around;
+
+    flex-wrap: wrap;
+}
+
+.search-pane-component .fields > div{
+    flex : 1 1 auto;
+}
+
+
+
+.search-pane-component #searchOptions{
+    display:flex;
+    align-items: center;
+
+}
+
+.search-pane-component #searchOptions > div{
+    flex:1 1 20%;
+    padding:5px;
+    margin:0px 5px;
+
+}
+.search-pane-component #searchOptions > div:nth-last-child(1){
+    flex:1 1 5%;
+    height: 40px;
+    cursor : pointer;
+    color:orangered;
+}
+.search-pane-component #showNav{
+    margin-top: 50px;
+
+
+}
+.search-pane-component #searchOptions hr{
+    margin:0px 0px 10px 0px;
+}
+
+.ui-widget-header {
+    border: 1px solid #e43725;
+    background: grey url(images/ui-bg_gloss-wave_55_5c9ccc_500x100.png) 50% 50% repeat-x;
+    color: #fff;
+    font-weight: bold;
+}
+
+#place_map_component #map{
+    height: 70vh;
+}
+
+#place_map_component .img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .search-pane-component #searchOptions{
+        display:flex;
+        flex-wrap : wrap;
+    }
+    .search-pane-component #searchOptions > div{
+        flex:1 1 100%;
+        padding:0px 5px;
+        margin:0px 5px;
+    }
+}
+
+.facilities.ng-enter{
+    opacity:0;
+    transition: all 0.6s ease-in-out;
+}
+.facilities.ng-enter.ng-enter-active{
+    opacity:1;
+}

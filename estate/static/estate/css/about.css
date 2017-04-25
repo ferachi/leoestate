@@ -1,0 +1,23 @@
+.banner{
+    min-height:600px;
+    background-image: url("/static/night-home.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 95%;
+    -webkit-background-size:cover;
+    background-size:cover;
+    margin:0px -15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#banner-content{
+    flex: 1 1 auto;
+    margin:50px;
+}
+
+#banner-content h1{
+    font-weight:bold;
+    font-size:3em;
+    color:white;
+}

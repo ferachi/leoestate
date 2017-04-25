@@ -1,0 +1,20 @@
+<div class="row" >
+	<div class="col-sm-12">
+		<div class="row" style="height: 65vh; overflow: scroll;">
+			<div  ng-repeat="place in $ctrl.places  | filter : $ctrl.searchExp | limitTo : $ctrl.inc track by place.id">
+
+				<div class="col-sm-6">
+					<property-palette place="place" show-detail=$ctrl.navToDetail(isList,place)></property-palette>
+				</div>
+				<div ng-if="($index + 1) % 2 == 0" class="clearfix visible-sm-block"></div>
+				<div ng-if="($index + 1) % 2 == 0" class="clearfix visible-md-block"></div>
+				<div ng-if="($index + 1) % 2 == 0" class="clearfix visible-lg-block"></div>
+			</div>
+		</div>
+        <div class="row">
+            <div class="col-sm-12">
+                <button class="btn btn-block btn-primary" ng-click="$ctrl.loadMore()" ng-disabled="$ctrl.isComplete">load more</button>
+            </div>
+        </div>
+	</div>
+</div>

@@ -1,0 +1,664 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"h1",
+				"h1\tTag"
+			],
+			[
+				"col",
+				"column"
+			],
+			[
+				"bak",
+				"background-color"
+			],
+			[
+				"Http",
+				"HttpResponseRedirect〔class〕"
+			],
+			[
+				"Scho",
+				"SchoolForm"
+			],
+			[
+				"property",
+				"propertyOptions"
+			],
+			[
+				"proper",
+				"propertyOptions"
+			],
+			[
+				"facl",
+				"facilityOptions"
+			],
+			[
+				"ind",
+				"indexOf"
+			],
+			[
+				"fac",
+				"facilityOptions"
+			],
+			[
+				"prop",
+				"propertyTypes"
+			],
+			[
+				"pu",
+				"purchaseType"
+			],
+			[
+				"pur",
+				"purchaseType"
+			],
+			[
+				"prope",
+				"propertyOptions"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"_",
+				"_facilityOptions"
+			],
+			[
+				"ng-re",
+				"ng-repeat\tAngularJS"
+			],
+			[
+				"sear",
+				"search-exp"
+			],
+			[
+				"un",
+				"unique_together"
+			],
+			[
+				"oth",
+				"other_fields"
+			],
+			[
+				"pro",
+				"property_types〔variable〕"
+			],
+			[
+				"Pr",
+				"PropertyType〔class〕"
+			],
+			[
+				"re",
+				"rest_framework"
+			],
+			[
+				"ng-repe",
+				"ng-repeat-end\tAngularJS"
+			],
+			[
+				"Pro",
+				"PropertyListCtrl"
+			],
+			[
+				"ver",
+				"verbose_module\tAngularJS"
+			],
+			[
+				"controll",
+				"controller"
+			],
+			[
+				"con",
+				"controller\tAngularJS"
+			],
+			[
+				"$loc",
+				"$locationProvider\tAngularJS"
+			],
+			[
+				"$locatio",
+				"$locationProvider\tAngularJS(DI)"
+			],
+			[
+				"$roo",
+				"$routeProvider\tAngularJS"
+			],
+			[
+				"Th",
+				"ThreeDViewSerializer〔class〕"
+			],
+			[
+				"Bu",
+				"BuyablePlace〔module〕"
+			],
+			[
+				"U",
+				"UserProfile"
+			],
+			[
+				"slu",
+				"slugify〔function〕"
+			],
+			[
+				"tr",
+				"transform"
+			],
+			[
+				"blo",
+				"blog_list〔variable〕"
+			],
+			[
+				"is_",
+				"is_author"
+			],
+			[
+				"do",
+				"document.location.path"
+			],
+			[
+				"Commm",
+				"CommentReplyForm"
+			],
+			[
+				"CommentFo",
+				"CommentFormView〔class〕"
+			],
+			[
+				"boot",
+				"bootstrap_form"
+			],
+			[
+				"ini",
+				"initialData〔variable〕"
+			],
+			[
+				"get",
+				"get_object_or_404"
+			],
+			[
+				"Com",
+				"CommentReply〔module〕"
+			],
+			[
+				"Co",
+				"CommentReply〔class〕"
+			],
+			[
+				"max",
+				"max_length"
+			],
+			[
+				"Ent",
+				"EntryDetailView〔class〕"
+			],
+			[
+				"Blo",
+				"BlogManager"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"EntryImag",
+				"EntryImageInline"
+			],
+			[
+				"ma",
+				"max_length"
+			],
+			[
+				"Bo",
+				"BookInlineFormSet〔variable〕"
+			],
+			[
+				"panel-d",
+				"panel-default"
+			],
+			[
+				"li",
+				"list-container__controls"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"bor",
+				"border"
+			],
+			[
+				"inline-",
+				"inline-grid"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 374.0,
+		"last_filter": "rei",
+		"selected_items":
+		[
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 448.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/ferachi/Documents/Resources/Bootstrap/themes/bootstrap-readable.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/templates/school/school_setting_edit.html",
+		"/C/Users/ferachi/Documents/Documentations/Semantic-Docs/docs/README.md",
+		"/C/Users/ferachi/Documents/Documentations/Bootstrap-3-Offline-Docs-master/Bootstrap-3-Offline-Docs-master/index.html",
+		"/C/Users/ferachi/Documents/Resources/Bootstrap/themes/bootstrap-flatly.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/templates/school/school_form.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/templates/school/school_index.html",
+		"/C/Users/ferachi/Documents/Documentations/anijs.wiki/anijs/mkdocs.yml",
+		"/C/Users/ferachi/Documents/Documentations/anijs.wiki/anijs/docs/index.md",
+		"/C/Users/ferachi/Documents/Documentations/anijs.wiki/anijs/docs/Home.md",
+		"/C/Users/ferachi/Documents/Documentations/anijs.wiki/README.md",
+		"/C/Users/ferachi/Documents/Documentations/anijs.wiki/Home.md",
+		"/C/Users/ferachi/Documents/Documentations/anijs.wiki/installation.md",
+		"/C/Users/ferachi/Documents/Resources/SemanticUI/semantic-build/dist/semantic.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolManager/schoolsession/static/js/session_update_form.js",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolManager/schoolsession/templates/schoolsession/session_update_form.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolManager/schoolsession/views.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolManager/schoolsession/urls.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolManager/nub/views.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/static/js/school_nub.js",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school_settings/static/settings/js/settings.js",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/_SchoolNub/schoolsession/views.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/_SchoolNub/templates/base.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/_SchoolNub/nub/templates/tags/data_table.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/_SchoolNub/nub/static/js/tags.js",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/_SchoolNub/school_settings/templates/school_settings/settings_base.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/_SchoolNub/school_settings/templates/school_settings/index.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/_SchoolNub/static/js/school_nub.js",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/_SchoolNub/templates/school_nub_base.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/nub/templatetags/nub_tags.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/nub/static/js/tags.js",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/schoolsession/templates/schoolsession/session_setting_list.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/nub/templates/tags/data_table.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/schoolsession/urls.py",
+		"/C/Users/ferachi/Documents/Documentations/SemanticUI/docs/README.md",
+		"/C/Users/ferachi/Documents/Documentations/SemanticUI/docs/package.json",
+		"/C/Users/ferachi/Documents/Resources/SemanticUI/semantic build/package.json",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/schoolsession/views.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/templates/school_nub_base.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/templates/base.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/SchoolNub/settings.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/nub/admin.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/nub/migrations/0005_auto_20170322_1058.py",
+		"/C/Users/ferachi/Documents/Documentations/SemanticUI/semanticUI/node_modules/semantic-ui/tasks/docs/build.js",
+		"/C/Users/ferachi/Documents/Documentations/SemanticUI/semanticUI/node_modules/semantic-ui/tasks/config/docs.js",
+		"/C/Users/ferachi/Documents/Documentations/SemanticUI/semantic-ui/semantic.json.example",
+		"/C/Users/ferachi/Documents/Documentations/SemanticUI/semanticUI/node_modules/semantic-ui/tasks/config/defaults.js",
+		"/C/Users/ferachi/Documents/Documentations/SemanticUI/semanticUI/node_modules/semantic-ui/gulpfile.js",
+		"/C/Users/ferachi/Documents/Documentations/SemanticUI/semanticUI/package.json",
+		"/C/Users/ferachi/Documents/Documentations/SemanticUI/semanticUI/semantic/gulpfile.js",
+		"/C/Users/ferachi/Documents/Documentations/SemanticUI/semanticUI/semantic.json",
+		"/C/Users/ferachi/Documents/Resources/Bootstrap/bootstrap-table-master/bootstrap-table-master/dist/locale/bootstrap-table-cs-CZ.js",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/static/css/school_nub.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/static/css/school_nub_base.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/templates/school/school_detail.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/static/school/css/school_detail.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/templates/school/school_setting_detail.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school_settings/templates/school_settings/settings_base.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/static/css/school_nub_.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/static/school/css/school_settings_detail.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/nub/static/js/school_manager.js",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/static/school/css/school_settings_edit.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/nub/templates/tags/icon_button.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/views.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/static/school/js/school_settings_edit.js",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/static/school/css/school_settings_index.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school_settings/static/settings/css/settings.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/forms.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/SchoolNub/urls.py",
+		"/C/Users/ferachi/Documents/PROJECTS/LetETalk/leteetalk/leteetalk/settings.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/nub/static/css/tags.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolManager/schoolsession/static/css/session_update_form.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolManager/nub/templates/nub/school_form.html",
+		"/C/Users/ferachi/Documents/PROJECTS/LetETalk/leteetalk/leteetalk/urls.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school/templates/school/school_settings_index.html",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/school_settings/static/settings/css/index.css",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolNub/nub/models/school.py",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/place.controllers.js",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/estate/estate.module.js",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/place.services.js",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/templates/place_list.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/templates/place_search.component.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/place.components.js",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/estate/views.py",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/lorem.txt",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/estate/urls.py",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/templates/place_property-summary.component.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/estate/estate.directives.js",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/styles/place.components.css",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/templates/place_property-list.component.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/templates/place_search-pane.component.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/estate/models.py",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/estate/styles/estate.css",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/templates/place_property-palette.component.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/templates/partials/stylesheets.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/estate/serializers.py",
+		"/C/Users/ferachi/Documents/Resources/my colors.js",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/templates/place_property-palette.directive.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/place.directives.js",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/place.module.js",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/estate/templates/estate/estate.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/templates/place_map.component.html",
+		"/C/Users/ferachi/Documents/PROJECTS/OLD PROJECTS/Projects/SchoolManagerX/Content/AppStyles/app.component.css",
+		"/C/Users/ferachi/Documents/PROJECTS/OLD PROJECTS/Projects/SchoolManagerX/Scripts/app/Classes/class.component.js",
+		"/C/Users/ferachi/Documents/PROJECTS/OLD PROJECTS/Projects/SchoolManagerX/Scripts/app/Students/new-student.component.html",
+		"/C/Users/ferachi/Documents/PROJECTS/OLD PROJECTS/Projects/SchoolManagerX/Scripts/app/app.component.js",
+		"/C/Users/ferachi/Documents/PROJECTS/OLD PROJECTS/Projects/SchoolManagerX/Scripts/app/app.component.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/templates/place_detail.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/templates/search.component.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/styles/place.directives.css",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/styles/place.css",
+		"/C/Users/ferachi/AppData/Roaming/Sublime Text 3/Packages/Emmet/Default (Windows).sublime-keymap",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/app.js",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/todo.txt",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/estate/admin.py",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/app/place/views/placelist.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/templates/base.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/static/js/hello.html",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/estate/lorem",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/estate/utils.py",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/EstateManager/settings.py",
+		"/C/Users/ferachi/Documents/PROJECTS/House Manager/EstateManager/EstateManager/urls.py",
+		"/C/Users/ferachi/Documents/PROJECTS/Nollypedia/Nollypedia/Nollybooth/booth/models.py",
+		"/C/Users/ferachi/Documents/PROJECTS/Nollypedia/Nollypedia/Nollybooth/Nollybooth/settings.py",
+		"/C/Users/ferachi/Documents/PROJECTS/Nollypedia/Nollypedia/Nollybooth/Nollybooth/urls.py",
+		"/C/Users/ferachi/Documents/PROJECTS/VIRTUAL ENVIRONMENT/SchoolManager/SchoolManager/setting.py",
+		"/C/Users/ferachi/Desktop/material/gulpfile.js",
+		"/C/Users/ferachi/Desktop/material/gulp/config.js"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"modal-lg",
+			"%20",
+			"-",
+			"]]",
+			" | ",
+			"[[",
+			"]]",
+			"[[",
+			"stretch",
+			"slug",
+			"paper",
+			"mis",
+			"mission",
+			"background-color",
+			"%}\n",
+			"\t\t\t",
+			"']);\n",
+			"()\n",
+			"'}\n",
+			">",
+			"tab",
+			"enter",
+			"__(models.",
+			"\t\n",
+			")\n",
+			"font-family",
+			"warning",
+			"body",
+			"success",
+			"body",
+			"warning",
+			"body",
+			"with",
+			"body",
+			"texta",
+			"input",
+			"h1",
+			"color",
+			"body",
+			"lead",
+			"body",
+			"Lato",
+			"h1",
+			"body",
+			";\n",
+			"choices",
+			"%}\n",
+			";\n",
+			"'),\n",
+			"}}</",
+			"30",
+			"# __unicode__ on Python 2",
+			"list-container",
+			"dashboard-comments",
+			">\n",
+			"remove",
+			">>> ",
+			"# ",
+			"date"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			" ",
+			"%20",
+			")",
+			"]",
+			"](",
+			"[",
+			"]",
+			"[",
+			"",
+			"dashboard-comment",
+			"list-container",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"default_dir": "C:\\Users\\ferachi\\Documents\\PROJECTS\\VIRTUAL ENVIRONMENT\\SchoolNub",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.doc":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "estatemanagerapp.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 380.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

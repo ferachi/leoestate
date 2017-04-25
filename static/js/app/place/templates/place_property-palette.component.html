@@ -1,0 +1,31 @@
+<div class="row property-palette-component" >
+    <div class="col-sm-12">
+        <div class="thumbnail" ng-click="$ctrl.navToDetail()">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h6 class="title text-uppercase">{{ $ctrl.property.title }}</h6>
+                </div>
+                <div class="col-xs-3" ng-click="$ctrl.showDetail({isList:false,place:$ctrl.property})">
+
+                    <p btn class="text-right" help-text="see brief description"><i class="fa fa-low-vision fa-lg"></i></p>
+                </div>
+            </div>
+
+            <img src="{{ $ctrl.property.thumbnail }}" class="img-responsive">
+            <div class="row">
+                <div class="col-xs-3">
+                    <h6 class="text-capitalize">{{$ctrl.property.property_type}}</h6>
+                </div>
+                <div class="col-xs-9">
+                    <h6 class="text-right">{{$ctrl.property.address.location}}</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h5 class="text-right price"> <strong> &euro; {{$ctrl.property.price}} </strong></h5>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

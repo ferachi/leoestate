@@ -1,0 +1,205 @@
+<div class="row search-pane-component">
+    <div class="col-sm-12">
+         <!-- <h5 class="col-sm-12 text-center" style="color:cadetblue;">Property</h5> -->
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <div class="search-field">
+                            <select id="purchaseType" class="form-control" ng-model="$ctrl.purchaseType"
+                                    ng-options="p.value as p.label for p in $ctrl.purchaseTypes"  ng-change="$ctrl.change()">
+                            </select>
+                            <label for="purchaseType" class="pull-right">Purchase Type</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="search-field">
+                            <input id="location" class="form-control" type="text" ng-model="$ctrl.location" placeholder="location">
+                            <label for="location" class="pull-right">Location</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="search-field">
+                                            <div class="row">
+                                                <div class="col-sm-6 text-left">
+                                                    <label class="val">&euro;{{$ctrl.price[0]}}</label>
+                                                </div>
+                                                <div class="col-sm-6 text-right">
+                                                    <label class="val">&euro;{{$ctrl.price[1]}}</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div p-slider ng-model="$ctrl.price" min="{{$ctrl.price[0]}}" max="{{$ctrl.price[1]}}" >
+                                                    </div>
+                                                    <label for="price" class="pull-right">Price</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="$ctrl.purchaseType ===  'rentableplace'" class="col-sm-6">
+                        <div class="search-field">
+                            <select id="duration" class="form-control" ng-model="$ctrl.duration"
+                                    ng-options="p.value as p.label for p in $ctrl.durations"  ng-change="$ctrl.change()">
+
+                            </select>
+                            <label for="duration" class="pull-right">price per</label>
+                        </div>
+                    </div>
+                    <div ng-if="$ctrl.purchaseType ===  'rentableplace'">
+                        <div class="clearfix visible-sm-block"></div>
+                        <div class="clearfix visible-md-block"></div>
+                        <div class="clearfix visible-lg-block"></div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="search-field">
+                            <select id="age" class="form-control" ng-model="$ctrl.age"
+                                    ng-options="p.value as p.label for p in $ctrl.ages"  ng-change="$ctrl.change()">
+                            </select>
+                            <label for="age" class="pull-right">Age</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="search-field">
+                                            <div class="row">
+                                                <div class="col-sm-6 text-left">
+                                                    <label class="val">{{$ctrl.area[0]}}m<sup>2</sup></label>
+                                                </div>
+                                                <div class="col-sm-6 text-right">
+                                                    <label class="val">{{$ctrl.area[1]}}m<sup>2</sup></label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div p-slider ng-model="$ctrl.area" min="{{$ctrl.area[0]}}" max="{{$ctrl.area[1]}}" step="10">
+                                                    </div>
+                                                    <label for="area" class="pull-right">Area</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="search-field">
+                                            <div class="row">
+                                                <div class="col-sm-6 text-left">
+                                                    <label class="val">{{$ctrl.rooms[0]}}</label>
+                                                </div>
+                                                <div class="col-sm-6 text-right">
+                                                    <label class="val">{{$ctrl.rooms[1]}}</label>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div p-slider ng-model="$ctrl.rooms" min="{{$ctrl.rooms[0]}}" max="{{$ctrl.rooms[1]}}" >
+                                                    </div>
+                                                    <label for="rooms" class="pull-right">Rooms</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1">
+                        
+                        <div class="row search-field-extra">
+                        <h5 class="text-center">Property Type</h5>
+                        <hr/>
+                            <div ng-repeat="option in $ctrl._propertyTypeOptions track by option.id" class="col-sm-4 text-right">
+                                <label>{{option.name}}
+                                    <input type="checkbox"
+                                           ng-model="option.selected" ng-change="$ctrl.propertyTypeChanged()">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1" >
+                        
+                        <div class="row search-field-extra">
+                        <h5 class="text-center">Facilities</h5>
+                        <hr/>
+                            <div ng-repeat="option in $ctrl._facilityOptions track by option.id" class="col-sm-4 text-right">
+                                <label>{{option.name}}
+                                    <input type="checkbox"
+                                           ng-model="option.selected" ng-change="$ctrl.facilitiesChanged()">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1" >
+                        
+                        <div class="row search-field-extra">
+                        <h5 class="text-center">Available Options</h5>
+                        <hr/>
+                            <div ng-repeat="option in $ctrl._otherOptions track by option.id" class="col-sm-4 text-right">
+                                <label>{{option.field_name}}
+                                    <input type="checkbox"
+                                           ng-model="option.selected" ng-change="$ctrl.optionsChanged()">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

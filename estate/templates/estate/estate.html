@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'estate/styles/estate.css' %}">
+    <link rel="stylesheet" href="{% static 'estate/styles/estate.directives.css' %}">
+    <link rel="stylesheet" href="{% static 'place/styles/place.css' %}">
+    <link rel="stylesheet" href="{% static 'place/styles/place.components.css' %}">
+    <link rel="stylesheet" href="{% static 'place/styles/place.directives.css' %}">
+
+{% endblock links %}
+{% block content %}
+    {% verbatim %}
+    <div class="row" ng-app="App" ng-cloak>
+        <div class="col-12" ng-controller="MainController">
+            <div loader>Loading.....</div>
+            <div ng-view></div>
+        </div>
+    </div>
+
+    {% endverbatim %}
+{% endblock content %}
+{% block footer %}
+{% endblock footer %}
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'estate/estate.module.js' %}"></script>
+    <script type="text/javascript" src="{% static 'estate/estate.directives.js' %}"></script>
+    <script type="text/javascript" src="{% static 'place/place.module.js' %}"></script>
+    <script type="text/javascript" src="{% static 'place/place.controllers.js' %}"></script>
+    <script type="text/javascript" src="{% static 'place/place.services.js' %}"></script>
+    <script type="text/javascript" src="{% static 'place/place.components.js' %}"></script>
+    <script type="text/javascript" src="{% static 'place/place.directives.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfAtTDuhGBFBHhyIV7YRNH92L_1yMZed8"
+            type="text/javascript"></script>
+
+{% endblock scripts %}

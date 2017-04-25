@@ -1,0 +1,13 @@
+{% extends 'registration/auth_base.html' %}
+{% load i18n %}
+
+{% block  content %}
+    {{ block.super }}
+    <div id="content" class="row">
+        <div class="col-sm-12">
+            <p class='text-align-center lead'>You have successfully logged out.</p>
+            <p class='text-align-center lead'><a href="{% url 'estate:index' %}">Home</a></p>
+            <p class='text-align-center lead'><a href="{% url 'auth_login' %}">Login</a></p>
+        </div>
+    </div>
+{% endblock %}

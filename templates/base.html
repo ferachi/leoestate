@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    {% block links %}
+        {% include 'partials/stylesheets.html' %}
+    {% endblock links %}
+    <title>{% block title %}Leo Altman{% endblock title %}</title>
+</head>
+<body>
+{% block navbar %}
+    {% include 'estate/partials/navbar.html' %}
+{% endblock navbar %}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12">
+        <div id="user" {% if user.is_authenticated %}data-is-authenticated="true" {% else %}data-is-authenticated="false" {% endif %}></div>
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+</div>
+{% block footer %}
+<div class="footer text-center">
+    <p> <i class="fa fa-copyright "></i> 2017 leo-altmann - All rights reserved.</p>
+</div>
+{% endblock footer %}
+{% block scripts %}
+    {% include "partials/scripts.html" %}
+{% endblock scripts %}
+</body>
+</html>

@@ -1,0 +1,75 @@
+.hide{
+    display:none;
+}
+
+body{
+    font-family: 'Nunito', sans-serif;
+}
+
+.navbar-default{
+    position:relative;
+    top:0px;
+    left:0px;
+    z-index:1000;
+    width:100%;
+    background-color: white;
+    -webkit-border-radius:0px;
+    -moz-border-radius:0px;
+    border-radius:0px;
+    margin:0px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #1c2b36;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color:#1c2b36;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus{
+    color:#1c2b36;
+}
+
+.navbar-collapse.collapsing, .navbar-collapse.in{
+    background-color: whitesmoke;
+}
+
+/*When the dropdown is open, the main toggle*/
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus{
+    background: transparent;
+    cursor:pointer;
+}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color:#1c2b36;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    text-decoration: none;
+    color: #7b8a8b;
+    background-color: #e2e2e2;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    /*background-color: #1a242f;*/
+    color: #1a242f;
+}
+a{
+    color:#1c2b36;
+}
+a.navbar-brand.leo-title:hover{
+    font-size: 2em;
+    font-weight:bold;
+    color:orangered;
+}
+.navbar-default .navbar-toggle {
+    border-color: #1a242f;
+    background-color: #1a242f;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}
+@media (max-width: 767px){
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+        color: #1c2b36;
+    }
+}

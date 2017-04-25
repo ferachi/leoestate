@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-6">
+                <label for="purchaseType">Purchase Type</label>
+                <select id="purchaseType" class="form-control" ng-model="$ctrl.purchaseType"
+                        ng-options="p.value as p.label for p in $ctrl.purchaseTypes"  ng-change="$ctrl.change()">
+                </select>
+            </div>
+            <div class="col-sm-6">
+                <label for="location">Location</label>
+                <input id="location" class="form-control" type="text" ng-model="$ctrl.location" placeholder="location">
+            </div>
+        </div>
+
+    </div>
+</div>

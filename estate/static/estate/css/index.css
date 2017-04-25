@@ -1,0 +1,82 @@
+.banner{
+    height:550px;
+    background-image: url("/static/home.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    -webkit-background-size:cover;
+    background-size:cover;;
+    margin:0px -15px;
+    /*width : 100vw;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#banner-content{
+    flex: 1 1 auto;
+    margin-top:-130px;
+}
+
+#banner-content h1{
+    font-weight:bold;
+    font-size:2.5em;
+    color:white;
+    background-color: #1a242f;
+    padding:5px;
+    margin-top:0px;
+    border-radius: 10px;
+}
+.buy-sell{
+    margin:5px;
+    padding:20px;
+}
+.ad-bar{
+    margin-top:20px;
+    background-color: lightcyan;
+    height: 300px;
+    padding:10px;
+}
+.ad-bar:nth-child(2){
+    background-color: lightpink;
+}
+.ad-bar:nth-child(3){
+    background-color: lightblue;
+}
+.ad-bar:nth-child(4){
+    background-color: lightgoldenrodyellow;
+}
+.ad-bar > p{
+    height: 25%;
+}
+.ad-bar > div{
+    display: flex;
+    height: 40%;
+    align-items: center;
+}
+.ad-bar > div > i{
+    flex: 1 1 100%;
+    font-size:6em;
+}
+
+#ad-row{
+    margin-top:20px;
+}
+
+.ad-bar i{
+    margin-top:5px;
+}
+
+@media screen and (max-width: 768px) {
+    #banner-content h1{
+        font-weight:bold;
+        font-size:1.5em;
+        color:white;
+        background-color: #1a242f;
+        padding:5px;
+        margin-top:-20px;
+        border-radius: 10px;
+    }
+    .ad-bar{
+        margin:5px 15px;
+    }
+}

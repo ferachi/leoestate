@@ -1,0 +1,25 @@
+{% extends 'registration/auth_base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+    {{ block.super }}
+    <div id="content" class="row">
+        <div class="col-md-4 col-sm-offset-4">
+            <h3 class="text-center">Registration</h3>
+            <hr>
+            <form novalidate action="" method="post">
+                {% csrf_token %}
+                {% bootstrap_form  form show_help=False %}
+                {% buttons %}
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+{% endblock content %}

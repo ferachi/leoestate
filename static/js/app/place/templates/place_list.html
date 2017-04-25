@@ -1,0 +1,23 @@
+<div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-12">
+            <search search-exp="searchExp" options='options'></search>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <map places="places" search-exp="searchExp"></map>
+        </div>
+        <div class="col-sm-4">
+            <property-list ng-if="isList" places="places" search-exp="searchExp" show-detail="showDetail(isList,place)"></property-list>
+            <property-summary ng-if="!isList" place="place" show-detail="showDetail(isList)"></property-summary>
+        </div>
+    </div>
+    <div class="row">
+        <div class="footer text-center">
+            <p> <i class="fa fa-copyright "></i> 2017 leo-altmann - All rights reserved.</p>
+        </div>
+    </div>
+
+
+</div>

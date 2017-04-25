@@ -1,0 +1,19 @@
+#content{
+    margin-top:30px;
+}
+
+.banner{
+    height:70px;
+    margin:0px -15px;
+    background-color: #1a242f;
+}
+
+#content a{
+    color:dodgerblue;
+}
+
+.footer{
+    position:absolute;
+    bottom:0px;
+    width:100vw;
+}

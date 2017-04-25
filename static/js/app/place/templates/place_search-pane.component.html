@@ -1,0 +1,141 @@
+<div class="row search-pane-component">
+    <div class="col-sm-12">
+        <!-- <h5 class="col-sm-12 text-center" style="color:cadetblue;">Property</h5> -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="searchOptions">
+                    <div class="">
+                        <div class="search-field">
+                            <div class="row text-center">
+                                <label for="location" class="">Location</label>
+                                <hr/>
+                            </div>
+                            <div>
+                                <input id="location" class="form-control" type="text" ng-model="$ctrl.location" placeholder="location">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="search-field range-field">
+                            <div class="text-center">
+                                <label for="price" class="">Price</label>
+                                <hr/>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6 text-left">
+                                    <label class="val">&euro;{{$ctrl.price[0]}}</label>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <label class="val">&euro;{{$ctrl.price[1]}}</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div p-slider ng-model="$ctrl.price" min="{{$ctrl.price[0]}}" max="{{$ctrl.price[1]}}" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="search-field">
+                            <div class="text-center">
+                                <label for="propertyType" class="">Property Type</label>
+                                <hr/>
+                            </div>
+                            <div>
+                                <select id="propertyType" class="form-control" ng-model="$ctrl.propertyType"
+                                        ng-options="p.name as p.name for p in $ctrl._propertyTypeOptions"  ng-change="$ctrl.change()">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="search-field range-field">
+                                    <div class="row">
+                                        <div class="col-sm-12 text-center">
+                                            <label for="area" class="">Area</label>
+                                            <hr/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 text-left">
+                                            <label class="val">{{$ctrl.area[0]}}m<sup>2</sup></label>
+                                        </div>
+                                        <div class="col-sm-6 text-right">
+                                            <label class="val">{{$ctrl.area[1]}}m<sup>2</sup></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div p-slider ng-model="$ctrl.area" min="{{$ctrl.area[0]}}" max="{{$ctrl.area[1]}}" step="10">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="search-field range-field">
+                                    <div class="row">
+                                        <div class="col-sm-12 text-center">
+                                            <label for="area" class="">Rooms</label>
+                                            <hr/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 text-left">
+                                            <label class="val">{{$ctrl.rooms[0]}}</label>
+                                        </div>
+                                        <div class="col-sm-6 text-right">
+                                            <label class="val">{{$ctrl.rooms[1]}}+</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div p-slider ng-model="$ctrl.rooms" min="{{$ctrl.rooms[0]}}" max="{{$ctrl.rooms[1]}}" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="showNav" class="text-center">
+                        <i id="loadMoreBtn" ng-click="$ctrl.showFacilities = !$ctrl.showFacilities" class="fa fa-plus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="facilities" ng-if="$ctrl.showFacilities">
+                     <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3" >
+                        <div class="search-field-extra">
+                            <h5 class="text-center">Facilities</h5>
+                            <hr/>
+                            <div class="fields">
+                                <div ng-repeat="option in $ctrl._facilityOptions track by option.id" >
+                                    <label>
+                                        <input type="checkbox"
+                                               ng-model="option.selected" ng-change="$ctrl.facilitiesChanged()"> {{option.name}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

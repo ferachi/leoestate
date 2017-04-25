@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'estate/css/index.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="banner text-center">
+                <div id="banner-content">
+                    <div class="col-sm-offset-4 col-sm-4" >
+                        <h1 class="sp-font">Buy and Sell your Houses 100% Online</h1>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-6 text-center">
+                <div class="buy-sell">
+                    <h3 class="sp-font">Sell your House</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam at cumque, doloremque dolores facere ipsam ipsum laboriosam.</p>
+                    <a href="{% url 'estate:about' %}" class="btn btn-primary btn-lg">Sell your house</a>
+                </div>
+            </div>
+            <div class="col-sm-6 text-center">
+                <div class="buy-sell">
+                    <h3 class="sp-font">Buy your House</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam at cumque, doloremque dolores facere ipsam ipsum laboriosam.</p>
+                    <a href="{% url 'estate:estate' %}" class="btn btn-warning btn-lg">Buy your house</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="ad-row" class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="row">
+                <div class="col-sm-3 ad-bar text-center">
+                    <p class="sp-font lead">Warranties on houses</p>
+                    <div class="">
+
+                        <i class="fa fa-home fa-5x"></i>
+                    </div>
+                </div>
+                <div class="col-sm-3 ad-bar text-center">
+                    <p class="lead">Guaranteed satisfaction</p>
+                    <div class="">
+
+                        <i class="fa fa-heart fa-5x"></i>
+                    </div>
+                </div>
+                <div class="col-sm-3 ad-bar text-center">
+                    <p class="lead">Round the clock response</p>
+                    <div class="">
+                        <i class="fa fa-clock-o fa-5x"></i>
+                    </div>
+                </div>
+                <div class="col-sm-3 ad-bar text-center">
+                     <p class="lead">Friendly prices</p>
+                    <div class="">
+
+                        <i class="fa fa-money fa-5x"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

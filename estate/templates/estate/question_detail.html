@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% load estate_filters %}
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'estate/css/question_detail.css' %}">
+{% endblock links %}
+
+{% block content %}
+
+    <div  id="question-detail" class="row">
+        <div class="col-sm-4">
+            <a href="{% url 'estate:property_detail' slug=question.place.slug %}">
+                <div id="title">
+                    <h4 class="sp-bold sp-font">{{ question.place.property_type }}-{{ question.place.title }}</h4>
+                    <h5>Price: &euro;{{ question.place.price }}</h5>
+                </div>
+                <div>
+                    <img class="img-responsive" src="{{ question.place.image.url }}" alt="question.place.title">
+                </div>
+            </a>
+        </div>
+        <div class="col-sm-8">
+            <div class="question">
+                <h4 class="sp-bold">
+                    {{ question.content }}
+                </h4>
+                <p class="small">asked by {{ question.user_profile }} on {{ question.date }}</p>
+            </div>
+
+            <div class="respond-form">
+                <form action="{% url 'estate:answer_form' pk=question.pk place=question.place.slug %}" method="post" class="horizontal-form">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    <input class="btn btn-primary" type="submit" value="answer">
+                </form>
+
+            </div>
+            <hr/>
+            <div class="answers">
+                <h4 class="sp-bold">Answers</h4>
+                {% for answer in question.answers.all %}
+                    <div class="qa-item">
+                        <p class="content"><span class="header">A:</span> {{ answer.content }}</p>
+                        <p class="extra">answered by {{ answer.user_profile }} | {{ answer.date }}</p>
+                        <div  data-id="{{ answer.id }}" class="extra vote-btns" ><span id="like{{ answer.id }}">{{ answer|likes }}</span> <i data-id="{{ answer.id }}" data-bool="true" class="fa fa-thumbs-up es-btn like-btn"></i> <span id="dislike{{ answer.id }}">{{ answer|likes:False }}</span> <i data-id="{{ answer.id }}" data-bool="false" class="fa fa-thumbs-down es-btn like-btn"></i></div>
+                        <div>
+                            <form data-id="{{ answer.id }}" id="voteForm{{ answer.id }}" method="post" action="{% url 'estate:vote' %}" class="vote-form">
+                                {% csrf_token %}
+                                {{ vote_form }}
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'estate/js/question_detail.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load bootstrap3%}
+{% load static %}
+
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'auth_page.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="banner">
+                <div id="banner-content">
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}
+

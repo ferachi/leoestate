@@ -1,0 +1,307 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'estate/css/place_detail.css' %}">
+{% endblock links %}
+
+{% block content %}
+    <div id="place-detail" class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="row">
+                <div class="col-sm-7">
+                    <hr/>
+                    <div>
+                        <ul class="nav nav-tabs">
+                            <li class=""><a href="#home" data-toggle="tab" aria-expanded="false">Virtual Tour</a></li>
+                            <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="true">Photos</a></li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane fade " id="home">
+                                <div id="threeDView">
+                                    <p>3D View</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade active in" id="profile">
+                                <div>
+                                    <img src="{{ place.image.url }}" alt="{{ place.title }}" class="img-responsive">
+                                </div>
+                                <div class="image-display">
+                                    <div id="pictureModal" class="modal fade">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <div id="row">
+                                                        <div class="text-center">
+                                                            <i id="leftBtn" class="fa fa-caret-left fa-4x es-btn"></i>
+                                                        </div>
+                                                        <div class="">
+                                                            <h4 id="modalTitle" class="modal-title"></h4>
+                                                            <img id="modalImage" class="img-responsive" src="{{ image.image.url }}" alt="{{ image.title }}">
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <i id="rightBtn" class="fa fa-caret-right fa-4x es-btn"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="thumb-images">
+                                    <div class="grid">
+                                        {% for image in place.images.all %}
+                                            <a href="" class="grid-item img-btn" data-toggle="modal" data-target="#pictureModal">
+                                                <img data-pos="{{ forloop.counter }}" class="img-responsive" src="{{ image.image.url }}" alt="{{ image.title }}">
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="mapPane">
+                        <div id="map"></div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <hr/>
+                    <div id="title">
+                        <h3 id="placeTitle" class="sp-bold sp-font text-capitalize">{{ place.property_type }} - {{ place.title }}</h3>
+                        <h4 class="sp-bold lead text-danger">&euro;{{ place.price }}</h4>
+                        <input id="latitude" type="hidden" value="{{ place.address.latitude }}">
+                        <input id="longitude" type="hidden" value="{{ place.address.longitude }}">
+                    </div>
+                    <hr/>
+                    <div class="summary">
+                        <h5 class="sp-bold">Summary</h5>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td class="sp-bold">Property type</td>
+                                        <td >{{ place.property_type }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sp-bold">Price</td>
+                                        <td>{{ place.price }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sp-bold">Area</td>
+                                        <td>{{ place.area }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sp-bold">Rooms</td>
+                                        <td>{{ place.no_rooms }}</td>
+                                    </tr>
+                                    {% if place.no_bedrooms > 0%}
+                                        <tr>
+                                            <td class="sp-bold">Bedroom</td>
+                                            <td>{{ place.no_bedrooms }}</td>
+                                        </tr>
+                                    {% endif %}
+                                    {% if place.floor %}
+                                        <tr>
+                                            <td class="sp-bold">Floor</td>
+                                            <td>{{ place.floor }}</td>
+                                        </tr>
+                                    {% endif %}
+                                    {% if place.monthly_charges > 0%}
+                                        <tr>
+                                            <td class="sp-bold">Monthly Charge</td>
+                                            <td>{{ place.monthly_charges }}&euro;</td>
+                                        </tr>
+                                    {% endif %}
+                                    {% if place.property_tax > 0%}
+                                        <tr>
+                                            <td class="sp-bold">Property tax</td>
+                                            <td>{{ place.property_tax }}&euro;</td>
+                                        </tr>
+                                    {% endif %}
+                                </table>
+                            </div>
+                            <div class="col-sm-6">
+                                <h5 class="sp-bold visible-xs">Others</h5>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td class="sp-bold">City</td>
+                                        <td>{{ place.address.location }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="sp-bold">Postal Code</td>
+                                        <td>{{ place.address.postal_code }}</td>
+                                    </tr>
+                                    {% for field in place.other_fields.all %}
+                                        <tr>
+                                            <td class="sp-bold">{{ field.field_name }}</td>
+                                            <td>{{ field.field_value }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div id="description">
+                        <h4 class="sp-bold">Description</h4>
+                        <p>{{ place.description }}</p>
+                    </div>
+
+                    <hr/>
+                    <div class="facilities">
+                        <h5 class="sp-bold">Facilities</h5>
+                        {% for facility in place.facilities.all %}
+                            {{ facility }},
+                        {% endfor %}
+                    </div>
+                    <hr/>
+                    <div id="infoForm">
+                        <div id="infoModal" class="modal fade">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-sm-8 col-sm-offset-2">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <h4 class="modal-title sp-bold">Want more information about the current property?</h4>
+                                                        <hr/>
+                                                        <form class="" method="post" action="{% url 'estate:place_info' place=place.slug %}">
+                                                            {% csrf_token %}
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div style="margin:20px 10px;">
+                                                                        {% bootstrap_field contact_form.first_name form_group_class="" addon_before='<i class="fa fa-user"></i>' %}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div style="margin:20px 10px;">
+                                                                        {% bootstrap_field contact_form.last_name form_group_class="" addon_before='<i class="fa fa-user"></i>' %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row" >
+                                                                <div class="col-sm-6">
+                                                                    <div style="margin:20px 10px;">{% bootstrap_field contact_form.email form_group_class="" addon_before='<i class="fa fa-envelope"></i>' %}</div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div style="margin:20px 10px;">
+                                                                        {% bootstrap_field contact_form.phone_number form_group_class="" addon_before='<i class="fa fa-phone"></i>' %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <div style="margin:20px 10px;">{% bootstrap_field contact_form.message form_group_class="" %}</div></div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-4 col-sm-offset-4">
+                                                                    <div style="margin:20px 10px;">
+                                                                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                                                                        <i class="fa fa-paper-plane fa-lg"></i> send message
+                                                                    </button>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-pane text-center text-primary">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h4>For more information</h4>
+                                <button data-toggle="modal" data-target="#infoModal" id="infoBtn" class="btn btn-primary"> Book a visit </button>
+                                <h4 class="sp-bold">OR</h4>
+                                <p class="">Call us on 123XXXXX</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="polls">
+                        <h4 class="text-center">Q &amp; A</h4>
+                        <div class="form-pane">
+                            <form action="{% url 'estate:property_detail' slug=place.slug %}" method="post" class="form-horizontal">
+                                {% csrf_token %}
+                                {% bootstrap_form form %}
+                                {% buttons %}
+                                    <input type="submit" class="btn btn-success btn-block" value="ask">
+                                {% endbuttons %}
+                            </form>
+                        </div>
+                        <hr/>
+                        <div id="qsAndAs">
+                            {% for question in place.questions.all %}
+                                <div id="qAndA" class="main-question">
+                                    <div class="qa-item">
+                                        <p class="content"><span class="header">Q:</span> {{ question.content }}</p>
+                                        <a href="{% url 'estate:question_detail' place=place.slug pk=question.pk %}" class="action"><i class="fa fa-reply fa-fw"></i> reply</a>
+                                    </div>
+                                    <div class="answers">
+                                        {% for answer in question.answers.all|slice:"3" %}
+                                            <div class="qa-item">
+                                                <p class="content"><span class="header">A:</span> {{ answer.content }}</p>
+                                                <p class="extra">{{ answer.user_profile }} | {{ answer.date }}</p>
+                                            </div>
+                                        {% endfor %}
+                                        {% if question.answers.all|length > 3 %}
+                                            <div>
+                                                <a href="{% url 'estate:question_detail' place=place.slug pk=question.pk %}">view all answers</a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                        <button id="loadQuestionsBtn" class="btn btn-block btn-primary">load more <span id="remainingCount"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'estate/js/place_detail.js' %}"></script>
+    <script>
+        function initMap() {
+            var center = {lat: 48.7905537, lng: 2.0430725};
+            console.log($("#latitude").val());
+            var lat = parseFloat($("#latitude").val());
+            var lng = parseFloat($("#longitude").val());
+
+            var placeLatlng = {lat:lat , lng:lng};
+            console.log(placeLatlng);
+            // Styles a map in night mode.
+            var mapOptions = {
+                zoom: 12,
+                center: placeLatlng
+            }
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: placeLatlng,
+                title:$("#placeTitle").text(),
+            });
+
+            // To add the marker to the map, call setMap();
+            marker.setMap(map);
+        }
+
+    </script>
+    {#    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>#}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfAtTDuhGBFBHhyIV7YRNH92L_1yMZed8&callback=initMap"
+            type="text/javascript"></script>
+{% endblock scripts %}

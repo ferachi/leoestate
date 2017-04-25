@@ -1,0 +1,30 @@
+{% extends 'registration/auth_base.html' %}
+{% load i18n %}
+{% load bootstrap3%}
+
+{% block content %}
+    {{ block.super }}
+    <div id="content" class='row'>
+        <div class='col-sm-4 col-sm-offset-4'>
+            <h2 class="text-center">Sign In</h2>
+            <hr/>
+            <form novalidate method="post" action="">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                {% buttons %}
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+                {% endbuttons %}
+            </form>
+            <hr/>
+            <p class="text-center">Not a member? <a href="{% url 'registration_register' %}">{% trans "Register" %} </a></p>
+        </div>
+
+    </div>
+
+{% endblock %}

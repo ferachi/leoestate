@@ -1,0 +1,10 @@
+<div id="place_map_component" class="row">
+	<div class="col-sm-12">
+        <div id="map"></div>
+        <div ng-repeat="place in $ctrl.places  | filter : $ctrl.searchExp track by place.id">
+            <div ng-if="$last">
+                <input type="hidden" ng-model="$ctrl.placeCount" value="{{ $index }}">
+            </div>
+        </div>
+	</div>
+</div>

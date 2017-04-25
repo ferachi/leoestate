@@ -1,0 +1,62 @@
+#question-detail{
+
+}
+
+.navbar-default{
+    position:relative;
+    background-color: #1a242f;
+}
+
+.nav-tabs>li>a {
+    color: grey;
+}
+#question-detail .qa-item{
+    margin:10px 0px;
+}
+#question-detail .qa-item .content .header{
+    font-weight:bold;
+    color: #1a242f;
+}
+
+#question-detail .qa-item .content{
+    margin:0px;
+    color:grey;
+}
+#question-detail .qa-item .action{
+    margin:0px;
+    color:#c0c0c0;
+    font-size: 0.9em;
+}
+
+#question-detail .qa-item .extra{
+    margin:0px;
+    color:#c0c0c0;
+    font-size: 0.9em;
+}
+
+#question-detail #qAndA{
+    margin:10px 0px;
+    border:1px solid whitesmoke;
+    padding:10px;
+}
+
+#question-detail .small{
+   color:#c0c0c0;
+}
+
+#question-detail .extra i{
+    margin-right: 15px;
+}
+
+#question-detail a{
+    color:grey;
+}
+
+#question-detail a:hover{
+    color:grey;
+    text-decoration: none;
+}
+
+#question-detail .like-btn-clicked{
+    color:grey;
+}
