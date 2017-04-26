@@ -77,7 +77,7 @@ class PropertyDetailView(DetailView, FormMixin, ProcessFormView):
 			user_profile = get_object_or_404(UserProfile, user=self.request.user)
 			kwargs['question_form'] = UserQuestionForm(initial={'place': self.object, 'user': user_profile})
 		else:
-			kwargs['question_form'] = QuestionForm()
+			kwargs['question_form'] = QuestionForm(initial={'place': self.object})
 		kwargs['contact_form'] = PlaceInfoForm(initial={'place':self.object.title})
 		return super(PropertyDetailView, self).get_context_data(**kwargs)
 
