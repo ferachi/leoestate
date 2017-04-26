@@ -140,7 +140,7 @@ STATICFILES_DIRS = [
 ]
 
 
-MEDIA_URL = '/https://s3.amazonaws.com/EstateManager/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media")
 
 
