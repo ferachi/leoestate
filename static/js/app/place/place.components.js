@@ -13,7 +13,7 @@ var app = angular.module('place.components', []);
  * @desc component to handle search  for Place Module
  */
 app.component('search', {
-    templateUrl:'/static/place/templates/place_search.component.html',
+    templateUrl:'/place/templates/place_search.component.html',
     controller:'SearchCtrl',
     bindings : {
         searchExp : '=',
@@ -43,7 +43,7 @@ app.controller('SearchCtrl', ['$timeout',function($timeout){
  * @desc component to handle quick search within the search component
  */
 app.component('searchBar', {
-    templateUrl:'/static/place/templates/place_search-bar.component.html',
+    templateUrl:'/place/templates/place_search-bar.component.html',
     controller:'SearchBarCtrl',
     bindings : {
         searchExp : "="
@@ -94,7 +94,7 @@ app.controller('SearchBarCtrl', [function(){
  * @desc component to handle advanced search within the search component
  */
 app.component('searchPane', {
-    templateUrl:'/static/place/templates/place_search-pane.component.html',
+    templateUrl:'/place/templates/place_search-pane.component.html',
     controller:'SearchPaneCtrl',
     bindings : {
         searchExp : '=',
@@ -285,7 +285,7 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
  */
 
 app.component('map', {
-    templateUrl:'/static/place/templates/place_map.component.html',
+    templateUrl:'/place/templates/place_map.component.html',
     controller:'MapCtrl',
     bindings:{
         places:"=",
@@ -371,7 +371,7 @@ app.controller('MapCtrl', ['$filter','$scope','$interval',function($filter, $sco
  */
 
 app.component('propertyList', {
-    templateUrl:'/static/place/templates/place_property-list.component.html',
+    templateUrl:'/place/templates/place_property-list.component.html',
     controller:'PropertyListCtrl',
     bindings : {
         places : "=",
@@ -418,7 +418,7 @@ app.controller('PropertyListCtrl', [function(){
  * @desc component that is a thumbnail for each individual place
  */
 app.component('propertyPalette',{
-        templateUrl: '/static/place/templates/place_property-palette.component.html',
+        templateUrl: '/place/templates/place_property-palette.component.html',
         controller : 'PropertyPaletteController',
         bindings:{
             property:'=place',
@@ -452,7 +452,7 @@ app.controller('PropertyPaletteController', ["$location",function($location){
  * @desc component that is a thumbnail for each individual place
  */
 app.component('propertySummary',{
-        templateUrl: '/static/place/templates/place_property-summary.component.html',
+        templateUrl: '/place/templates/place_property-summary.component.html',
         controller : 'PropertySummaryController',
         bindings:{
             property:'=place',

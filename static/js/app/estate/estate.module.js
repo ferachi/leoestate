@@ -17,7 +17,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
 	.when('/estate/',{
 		controller:'PlaceListCtrl',
 		controllerAs : 'ctrl',
-		templateUrl:'/static/place/templates/place_list.html',
+		templateUrl:'/place/templates/place_list.html',
 		resolve : {
 			places : function(PlacesLoader){
 				return PlacesLoader();
@@ -30,7 +30,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
 	.when('/estate/view/:slug/',{
 		controller:'PlaceViewCtrl',
 		controllerAs : 'ctrl',
-		templateUrl:'/static/place/templates/place_detail.html',
+		templateUrl:'/place/templates/place_detail.html',
 		resolve : {
 			place : function(PlaceLoader){
 				return PlaceLoader();
