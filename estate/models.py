@@ -148,6 +148,10 @@ class RentablePlace(Place):
 class BuyablePlace(Place):
 	is_sold = models.BooleanField(default=False)
 
+	class Meta:
+		verbose_name = 'Place'
+		verbose_name_plural = 'Places'
+
 
 class Question(models.Model):
 	place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name='questions')

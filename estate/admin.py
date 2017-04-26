@@ -1,18 +1,18 @@
 from django.contrib import admin
 from .models import *
 # Register your models here.
-admin.site.register(Place)
+# admin.site.register(Place)
 
 
 class AddressInline(admin.StackedInline):
 	model = Address
 
 
-@admin.register(RentablePlace)
-class RentablePlaceAdmin(admin.ModelAdmin):
-	inlines = [
-		AddressInline
-	]
+# @admin.register(RentablePlace)
+# class RentablePlaceAdmin(admin.ModelAdmin):
+# 	inlines = [
+# 		AddressInline
+# 	]
 
 
 @admin.register(BuyablePlace)
