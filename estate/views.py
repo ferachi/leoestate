@@ -64,6 +64,8 @@ class PropertyDetailView(DetailView, FormMixin, ProcessFormView):
 		if self.request.user.is_authenticated:
 			user_profile = get_object_or_404(UserProfile, user=self.request.user)
 			kwargs['initial'] = {'place': self.get_object(), 'user_profile': user_profile}
+		else:
+			kwargs['initial'] = {'place': self.get_object()}
 		return kwargs
 
 	def get_form_class(self):
