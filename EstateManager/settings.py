@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #Third Party
     'rest_framework',
     'bootstrap3',
+    'storages',
 
     #My Apps
     'estate.apps.EstateConfig',
@@ -165,3 +166,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static", "css", "vendors"),
 )
 
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_STORAGE_BUCKET_NAME = 'EstateManager'
+AWS_AUTO_CREATE_BUCKET = True
+# AWS_S3_CUSTOM_DOMAIN = 'leoaltmann.herokuapp.com'

@@ -20,6 +20,7 @@ django-jet==1.0.5
 django-parler==1.7
 django-polymorphic==1.1
 django-registration==2.2
+django-storages==1.5.2
 django-tag-parser==3.1
 django-template-analyzer==1.6.1
 django-wysiwyg==0.8.0
