@@ -125,7 +125,8 @@ class AnswerFormView(LoginRequiredMixin, FormView):
 
 	def form_valid(self, form):
 		instance = form.save(commit=False)
-		if self.request.user != instance.question.user_profile.user:
+		user_profile = UserProfile.objects.filter(user=self.request.user)
+		if user_profile != instance.question.user_profile:
 			instance.save()
 		return super(AnswerFormView, self).form_valid(form)
 
