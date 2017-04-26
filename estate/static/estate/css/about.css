@@ -1,6 +1,6 @@
 .banner{
     min-height:600px;
-    background-image: url("/static/night-home.jpg");
+    background-image: url("https://s3.amazonaws.com/EstateManager/night-home.jpg");
     background-repeat: no-repeat;
     background-position: 50% 95%;
     -webkit-background-size:cover;
