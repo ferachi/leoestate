@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="746px" height="430px" viewBox="0 0 746 430" enable-background="new 0 0 746 430" xml:space="preserve">
+<path fill="#1A1A1A" d="M558,285c0,3.313-2.979,6-6.825,6h-356.35c-3.846,0-7.825-2.687-7.825-6v-49c0-3.313,3.979-6,7.825-6h356.35
+	c3.846,0,6.825,2.687,6.825,6V285z"/>
+<path fill="#1A1A1A" d="M532,129.421c0,2.314-1.687,4.579-5,4.579H220c-3.313,0-7-2.264-7-4.579v-34.23c0-2.314,3.687-4.191,7-4.191
+	h307c3.313,0,5,1.877,5,4.191V129.421z"/>
+<text transform="matrix(1 0 0 1 267.5708 117.7603)" fill="#FFFFFF" font-family="'Roboto'" font-size="18">Estimation du prix du bien</text>
+<g>
+	<text transform="matrix(1 0 0 1 198.77 266.9277)" fill="#FFFFFF" font-family="'Roboto'" font-size="18">Possibilité de vendre le bien ultérieurement</text>
+</g>
+<line fill="none" stroke="#1A1A1A" stroke-width="3" stroke-miterlimit="10" x1="370.5" y1="139" x2="370.5" y2="226"/>
+</svg>

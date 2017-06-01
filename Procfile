@@ -1,1 +1,0 @@
-web: gunicorn EstateManager.wsgi --log-file -

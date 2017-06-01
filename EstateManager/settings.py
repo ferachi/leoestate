@@ -25,7 +25,7 @@ SECRET_KEY = 'baiiy7^dzj0l7g8dec#e4h#-_5!&04^^u=q^3xn77o3ck^788a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['leoaltmann.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     #Third Party
     'rest_framework',
     'bootstrap3',
-    'storages',
 
     #My Apps
     'estate.apps.EstateConfig',
@@ -83,12 +82,8 @@ WSGI_APPLICATION = 'EstateManager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -129,11 +124,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static", "js", "app"),
     os.path.join(BASE_DIR, "static", "js"),
     os.path.join(BASE_DIR, "static", "css"),
+    os.path.join(BASE_DIR, "static", "files"),
     os.path.join(BASE_DIR, "static", "img"),
     os.path.join(BASE_DIR, "static", "js", "vendors"),
     os.path.join(BASE_DIR, "static", "css", "vendors"),
@@ -142,36 +139,3 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "media")
-
-
-# Update database configuration with $DATABASE_URL.
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
-
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/https://s3.amazonaws.com/EstateManager/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-    os.path.join(BASE_DIR, "static", "js"),
-    os.path.join(BASE_DIR, "static", "css"),
-    os.path.join(BASE_DIR, "static", "img"),
-    os.path.join(BASE_DIR, "static", "js", "app"),
-    os.path.join(BASE_DIR, "static", "js", "vendors"),
-    os.path.join(BASE_DIR, "static", "css", "vendors"),
-)
-
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-AWS_ACCESS_KEY_ID='AKIAIOJBT4SJST2UMZLA'
-AWS_SECRET_ACCESS_KEY='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'
-AWS_STORAGE_BUCKET_NAME = 'EstateManager'
-AWS_AUTO_CREATE_BUCKET = True
-# AWS_S3_CUSTOM_DOMAIN = 'leoaltmann.herokuapp.com'

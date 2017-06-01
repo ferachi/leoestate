@@ -1,5 +1,5 @@
 body{
-    font-family: 'Nunito', sans-serif;
+    /*font-family: 'Nunito', sans-serif;*/
 }
 
 .navbar-default{
@@ -8,7 +8,8 @@ body{
     left:0px;
     z-index:1000;
     width:100%;
-    background-color: rgba(0,0,0,0);
+    /*background-color: rgba(0,0,0,0);*/
+    background-color: #1c2b36;
     -webkit-border-radius:0px;
     -moz-border-radius:0px;
     border-radius:0px;
@@ -59,16 +60,16 @@ a{
 a.navbar-brand.leo-title{
     font-size: 2em;
     font-weight:bold;
-    color:orangered;
+    color:whitesmoke;
 }
 a.navbar-brand.leo-title:hover{
     font-size: 2em;
     font-weight:bold;
-    color:orangered;
+    color:whitesmoke;
 }
 
 .footer {
-    margin-top:20px;
+    margin-top:0px;
     background-color: #1c2b36;
     color: #8dadc4;
     padding:15px;
@@ -84,4 +85,51 @@ a.navbar-brand.leo-title:hover{
 
 .es-btn{
     cursor:pointer;
+}
+
+
+.bootstrap-datetimepicker-widget table td.day,
+.bootstrap-datetimepicker-widget table td.hour,
+.bootstrap-datetimepicker-widget table td.minute,
+.bootstrap-datetimepicker-widget table td.second {
+    border:none;
+    border-radius:0;
+    background: dodgerblue;
+    color: white;
+    cursor: pointer;
+}
+
+.bootstrap-datetimepicker-widget table td.day:hover,
+.bootstrap-datetimepicker-widget table td.hour:hover,
+.bootstrap-datetimepicker-widget table td.minute:hover,
+.bootstrap-datetimepicker-widget table td.second:hover {
+    background: #222222;
+    color: white;
+    cursor: pointer;
+}
+
+.bootstrap-datetimepicker-widget table td.disabled,
+.bootstrap-datetimepicker-widget table td.disabled:hover {
+    background: none;
+    color: gray;
+    cursor: not-allowed;
+}
+
+
+
+.bootstrap-datetimepicker-widget table td.today {
+  background-color: grey;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+  background-color: rebeccapurple;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.container-fluid{
+    min-height: 85%;
 }

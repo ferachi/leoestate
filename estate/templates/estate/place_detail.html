@@ -156,51 +156,46 @@
                         {% endfor %}
                     </div>
                     <hr/>
+
+                    <div class="download-pane text-center text-primary">
+
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h4>téléchargement</h4>
+                                <form id="myDownloadForm" method="post" action="{% url 'estate:download_form' %}">
+                                    {% csrf_token %}
+                                    {{ download_form }}
+
+                                </form>
+                                {% if download_file %}
+                                    <a style="color:whitesmoke" type="button" class="btn btn-info" href="{{ download_file.document.upload.url}}"> téléchargement </a>
+                                {% else %}
+                                    <a style="color:whitesmoke"  id="downloadBtn" type="button" class="btn btn-info" href="{% url 'estate:download' %}"> Termes de téléchargement </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
                     <div id="infoForm">
                         <div id="infoModal" class="modal fade">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-body">
-                                        <div class="row">
+                                        <div id="formWindow" class="row">
                                             <div class="col-sm-8 col-sm-offset-2">
                                                 <div class="panel panel-default">
                                                     <div class="panel-body">
-                                                        <h4 class="modal-title sp-bold">Want more information about the current property?</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title sp-bold">Vous voulez plus d'informations sur la propriété actuelle?</h4>
                                                         <hr/>
-                                                        <form class="" method="post" action="{% url 'estate:place_info' place=place.slug %}">
+                                                        <form id="bookingForm" novalidate class="" method="post" action="{% url 'estate:place_info' place=place.slug %}">
                                                             {% csrf_token %}
+                                                            {% include 'estate/partials/booking_form.html' %}
                                                             <div class="row">
-                                                                <div class="col-sm-6">
-                                                                    <div style="margin:20px 10px;">
-                                                                        {% bootstrap_field contact_form.first_name form_group_class="" addon_before='<i class="fa fa-user"></i>' %}
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <div style="margin:20px 10px;">
-                                                                        {% bootstrap_field contact_form.last_name form_group_class="" addon_before='<i class="fa fa-user"></i>' %}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row" >
-                                                                <div class="col-sm-6">
-                                                                    <div style="margin:20px 10px;">{% bootstrap_field contact_form.email form_group_class="" addon_before='<i class="fa fa-envelope"></i>' %}</div>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <div style="margin:20px 10px;">
-                                                                        {% bootstrap_field contact_form.phone_number form_group_class="" addon_before='<i class="fa fa-phone"></i>' %}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <div style="margin:20px 10px;">{% bootstrap_field contact_form.message form_group_class="" %}</div></div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-sm-4 col-sm-offset-4">
+                                                                <div class="col-sm-6 col-sm-offset-3">
                                                                     <div style="margin:20px 10px;">
                                                                         <button type="submit" class="btn btn-primary btn-block btn-lg">
-                                                                        <i class="fa fa-paper-plane fa-lg"></i> send message
-                                                                    </button>
+                                                                            <i class="fa fa-paper-plane fa-lg"></i> envoyer le message
+                                                                        </button>
                                                                     </div>
 
                                                                 </div>
@@ -211,7 +206,18 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <div id="successWindow" class="row">
+                                            <div class="col-sm-8 col-sm-offset-2">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-body">
+                                                        <p class="lead text-center">réservation réussie</p>
+                                                        <button id="successBtn" data-dismiss="modal" type="button" class="btn btn-primary btn-block btn-lg">
+                                                            <i class="fa fa-paper-plane fa-lg"></i> d'accord
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -221,7 +227,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 <h4>For more information</h4>
-                                <button data-toggle="modal" data-target="#infoModal" id="infoBtn" class="btn btn-primary"> Book a visit </button>
+                                <button data-toggle="modal" data-target="#infoModal" id="infoBtn" class="btn btn-primary"> Réserver une visite </button>
                                 <h4 class="sp-bold">OR</h4>
                                 <p class="">Call us on 123XXXXX</p>
                             </div>
@@ -230,22 +236,27 @@
                     <hr/>
                     <div class="polls">
                         <h4 class="text-center">Q &amp; A</h4>
-                        <div class="form-pane">
-                            <form action="{% url 'estate:property_detail' slug=place.slug %}" method="post" class="form-horizontal">
-                                {% csrf_token %}
-                                {% bootstrap_form form %}
-                                {% buttons %}
-                                    <input type="submit" class="btn btn-success btn-block" value="ask">
-                                {% endbuttons %}
-                            </form>
-                        </div>
+                        {% if user.is_authenticated %}
+                            <div class="form-pane">
+                                <form action="{% url 'estate:property_detail' slug=place.slug %}" method="post" class="form-horizontal">
+                                    {% csrf_token %}
+                                    {% bootstrap_form form %}
+                                    {% buttons %}
+                                        <input type="submit" class="btn btn-success btn-block" value="ask">
+                                    {% endbuttons %}
+                                </form>
+                            </div>
+                        {% endif %}
                         <hr/>
                         <div id="qsAndAs">
-                            {% for question in place.questions.all %}
+                            {% for question in questions.all %}
+
                                 <div id="qAndA" class="main-question">
                                     <div class="qa-item">
                                         <p class="content"><span class="header">Q:</span> {{ question.content }}</p>
-                                        <a href="{% url 'estate:question_detail' place=place.slug pk=question.pk %}" class="action"><i class="fa fa-reply fa-fw"></i> reply</a>
+                                        {% if user.is_staff %}
+                                            <a href="{% url 'estate:question_detail' place=place.slug pk=question.pk %}" class="action"><i class="fa fa-reply fa-fw"></i> reply</a>
+                                        {% endif %}
                                     </div>
                                     <div class="answers">
                                         {% for answer in question.answers.all|slice:"3" %}
@@ -269,6 +280,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 {% endblock content %}
 
@@ -278,7 +290,6 @@
     <script>
         function initMap() {
             var center = {lat: 48.7905537, lng: 2.0430725};
-            console.log($("#latitude").val());
             var lat = parseFloat($("#latitude").val());
             var lng = parseFloat($("#longitude").val());
 
@@ -286,7 +297,7 @@
             console.log(placeLatlng);
             // Styles a map in night mode.
             var mapOptions = {
-                zoom: 12,
+                zoom: 15,
                 center: placeLatlng
             }
             var map = new google.maps.Map(document.getElementById("map"), mapOptions);

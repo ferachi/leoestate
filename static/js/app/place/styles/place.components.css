@@ -85,13 +85,13 @@
 
 .search-pane-component .fields{
     display:flex;
-    justify-content: space-around;
+    justify-content: flex-start;
 
     flex-wrap: wrap;
 }
 
 .search-pane-component .fields > div{
-    flex : 1 1 auto;
+    flex : 1 1 20%;
 }
 
 
@@ -108,16 +108,14 @@
     margin:0px 5px;
 
 }
-.search-pane-component #searchOptions > div:nth-last-child(1){
-    flex:1 1 5%;
-    height: 40px;
-    cursor : pointer;
-    color:orangered;
-}
+/*.search-pane-component #searchOptions > div:nth-last-child(1){*/
+    /*flex:1 1 5%;*/
+    /*height: 40px;*/
+    /*cursor : pointer;*/
+    /*color:orangered;*/
+/*}*/
 .search-pane-component #showNav{
-    margin-top: 50px;
-
-
+    cursor:pointer;
 }
 .search-pane-component #searchOptions hr{
     margin:0px 0px 10px 0px;

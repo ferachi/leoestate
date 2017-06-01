@@ -13,15 +13,19 @@
 
             <img src="{{ $ctrl.property.thumbnail }}" class="img-responsive">
             <div class="row">
-                <div class="col-xs-3">
+                <div class="col-xs-5">
                     <h6 class="text-capitalize">{{$ctrl.property.property_type}}</h6>
+                    <h6 class="text-capitalize">{{$ctrl.property.no_rooms}} Rooms</h6>
                 </div>
-                <div class="col-xs-9">
+                <div class="col-xs-7">
                     <h6 class="text-right">{{$ctrl.property.address.location}}</h6>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-6">
+                    <h5 class="text-left"> <strong> {{$ctrl.property.area}}m<sup>2</sup></strong></h5>
+                </div>
+                <div class="col-xs-6">
                     <h5 class="text-right price"> <strong> &euro; {{$ctrl.property.price}} </strong></h5>
                 </div>
             </div>

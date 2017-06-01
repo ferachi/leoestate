@@ -1,8 +1,8 @@
 .banner{
-    min-height:600px;
-    background-image: url("https://s3.amazonaws.com/EstateManager/night-home.jpg");
+    min-height:500px;
+    background-image: url("/static/about.jpg");
     background-repeat: no-repeat;
-    background-position: 50% 95%;
+    background-position: 50% 100%;
     -webkit-background-size:cover;
     background-size:cover;
     margin:0px -15px;
@@ -20,4 +20,11 @@
     font-weight:bold;
     font-size:3em;
     color:white;
+}
+
+#headers {
+    margin-top:20px;
+    background-color: #1c2b36;
+    padding:10px 15px;
+    border-radius: 3px;
 }

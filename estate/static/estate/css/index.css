@@ -1,6 +1,10 @@
+#indexPage{
+    background-color: #eeeeee;
+}
+
 .banner{
     height:550px;
-    background-image: url("https://s3.amazonaws.com/EstateManager/home.jpg");
+    background-image: url("/static/home-x.jpg");
     background-repeat: no-repeat;
     background-position: 50% 50%;
     -webkit-background-size:cover;
@@ -16,15 +20,20 @@
     flex: 1 1 auto;
     margin-top:-130px;
 }
-
-#banner-content h1{
-    font-weight:bold;
-    font-size:2.5em;
+#banner-content .headers{
     color:white;
     background-color: #1a242f;
-    padding:5px;
+    padding:10px;
     margin-top:0px;
     border-radius: 10px;
+}
+#banner-content h2{
+    font-weight:bold;
+    font-size:2.5em;
+
+}
+.banner .btn{
+    margin-top:20px;
 }
 .buy-sell{
     margin:5px;
@@ -32,21 +41,21 @@
 }
 .ad-bar{
     margin-top:20px;
-    background-color: lightcyan;
+    background-color: lightsteelblue;
     height: 300px;
     padding:10px;
 }
 .ad-bar:nth-child(2){
-    background-color: lightpink;
-}
-.ad-bar:nth-child(3){
     background-color: lightblue;
 }
+.ad-bar:nth-child(3){
+    background-color: lightskyblue;
+}
 .ad-bar:nth-child(4){
-    background-color: lightgoldenrodyellow;
+    background-color: powderblue;
 }
 .ad-bar > p{
-    height: 25%;
+    padding:0px 15px;
 }
 .ad-bar > div{
     display: flex;
@@ -66,6 +75,13 @@
     margin-top:5px;
 }
 
+#indexPage p{
+    font-size:1em;
+}
+
+#indexPage .buy-sell p{
+    font-size: 1.3em;
+}
 @media screen and (max-width: 768px) {
     #banner-content h1{
         font-weight:bold;

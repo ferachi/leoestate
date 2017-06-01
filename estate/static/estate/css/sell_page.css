@@ -1,0 +1,228 @@
+.navbar-default {
+    position: relative;
+    /*width:100%;*/
+    background-color: #1a242f;
+}
+
+
+#sellerPane .seller-offer{
+    margin:0px 0px 20px 0px;
+}
+
+#sellerPane .seller-offer h4, #sellerPane .seller-offer h5{
+    margin:0px;
+}
+
+#sellerPane .seller-offer p{
+    margin:0px;
+}
+
+#sellerPane p{
+    color: #555555;
+}
+g.vente rect{
+    fill: mediumpurple;
+}
+#sellerPane p.text-danger, #sellerPane p.text-danger:hover {
+    color: indianred;
+    font-size: 0.8em;
+    margin:0px;
+}
+
+#sellerPane #descriptionBox{
+    margin-top:30px;
+}
+
+#sellerPane .input-group-addon {
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1;
+    color: white;
+    text-align: center;
+    background-color: #8dadc4;
+    border: none;
+    /*border: 1px solid #cccccc;*/
+    border-radius: 0;
+}
+
+#sellerPane #clientForms{
+    margin-top:40px;
+}
+
+#sellerPane .form-field-error{
+    display:none;
+}
+#sellerPane #formsHolder{
+    padding:20px 10px 10px 10px;
+
+}
+
+#sellerPane #formsHolder .row{
+    margin-top:10px;
+    margin-bottom:25px;
+
+}
+
+
+#sellerPane #formContainer{
+    background-color: lavender;
+    transition: background-color 0.5s ease-in-out;
+}
+
+#sellerPane label {
+    color: #777777;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+    font-weight: normal;
+}
+#sellerPane input[type="radio"],#sellerPane input[type="checkbox"] {
+    margin:  0;
+    margin-left: -22px;
+    min-height: 18px;
+    min-width: 18px;
+    margin-top: 1px \9;
+    line-height: normal;
+}
+#sellerPane .nav>li>a:hover, .nav>li>a:focus {
+    text-decoration: none;
+    background-color: #e6e6e6;
+}
+
+#sellerPane .nav-pills>li>a {
+    border-radius: 0;
+    background-color: grey;
+}
+
+#sellerPane .nav>li>a {
+    font-size:0.9em;
+    padding: 8px 20px;
+    border-radius:2px;
+}
+#sellerPane #myTabContent{
+    margin-top:20px;
+}
+#sellerPane .nav>li.disabled>a {
+    color: whitesmoke;
+    background-color: grey;
+}
+
+#sellerPane .nav>li.disabled>a:hover, .nav>li.disabled>a:focus {
+    color: whitesmoke;
+    background-color: grey;
+    text-decoration: none;
+    cursor: text;
+}
+
+#sellerPane .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+    color: #ffffff;
+    background-color: #333333;
+}
+
+.has-error .form-control {
+    background-color: #fce3ee;
+    border-color: lightpink;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+#sellerPane #stepOneSubmitBtn{
+    margin-top:20px;
+}
+#sellerPane .form-control{
+    color:#555555;
+}
+
+#sellerPane #dateSelection{
+    margin-top:120px;
+}
+#sellerPane #dateSelected{
+    display:none;
+}
+
+#sellerPane #finish{
+    display: none;
+}
+
+#sellerPane .estimate-option label
+{
+    font-size:1.0em;
+    margin-right:20px;
+    margin-left:10px;
+}
+
+#sellerPane .estimate-option input[type="radio"]{
+    margin: -1px 0 0;
+    margin-left: -30px;
+    min-height: 24px;
+    min-width: 24px;
+    margin-top: 1px \9;
+    line-height: normal;
+}
+
+#sellerPane #flowChart{
+    display: flex;
+    /*padding:20px;*/
+}
+
+#sellerPane #flowChart > div{
+    background-color: aliceblue;
+    flex: 1 1 45%;
+    padding:10px 15px 30px;
+}
+
+#sellerPane #flowChart > div:nth-child(1){
+    background-color: lavender;
+    flex : 1 1 50%;
+}
+
+@media screen and (max-width: 768px) {
+    #sellerPane #flowChart{
+        flex-direction: column;
+    }
+}
+
+/*.form-control::-moz-placeholder:after {*/
+/*content: attr(data-superscript);*/
+/*font-size: 0.6em;*/
+/*vertical-align: super;*/
+/*}*/
+
+/*.form-control::-webkit-input-placeholder:after {*/
+/*content: attr(data-superscript);*/
+/*vertical-align: super;*/
+/*}*/
+
+/*.form-control:-ms-input-placeholder:after {*/
+/*content: attr(data-superscript);*/
+/*vertical-align: super;*/
+/*}*/
+
+/*::-webkit-input-placeholder {*/
+/*content: '*';*/
+/*}*/
+
+/*:-moz-placeholder { !* Firefox 18- *!*/
+/*content: '*';*/
+/*}*/
+
+/*::-moz-placeholder {  !* Firefox 19+ *!*/
+/*content: '*';*/
+/*}*/
+
+/*:-ms-input-placeholder {*/
+/*content: '*';*/
+/*}*/
+
+/*.has-error .form-control::-moz-placeholder {*/
+/*color: pink;*/
+/*opacity: 1;*/
+/*}*/
+/*.has-error .form-control:-ms-input-placeholder {*/
+/*color: pink;*/
+/*}*/
+/*.has-error .form-control::-webkit-input-placeholder {*/
+/*color: pink;*/
+/*}*/

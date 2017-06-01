@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'estate/css/download_page.css' %}">
+{% endblock links %}
+
+{% block content %}
+    <div class="row" id="downloadPage">
+        <div class="col-sm-12" style="min-height: 85vh;">
+            <div id="downloadDiv">
+            {% if form_downloads|length > 0 %}
+                <div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <h1 class="text-center">Forme d'accord</h1>
+                            <p>Ci-dessous est un formulaire contenant nos termes et votre accord pour chaque propriété que vous avez sélectionnée. Sélectionnez la propriété et cliquez sur Télécharger. Remplissez le formulaire et envoyez-le à contact@altissimmo.fr</p>
+                        </div>
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <div>
+                                <select name="" id="propertiesChoice" class="form-control">
+                                    {% for download in form_downloads %}
+                                        <option value="{{ download.property.id }}">{{ download.property }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div style="background-color: white; padding:20px; margin:20px 0px;">
+                                <a href="{% static 'terms.pdf' %}" class="center-block download-btn">
+                                    <img src="{% static 'terms.png' %}" class="img-thumbnail center-block  img-responsive" alt="Forme d'accord">
+                                </a>
+                            </div>
+
+                            <a href="{% static 'terms.pdf' %}" class="btn btn-primary center-block download-btn" style="margin-top:10px;">
+                                <i class="fa fa-download"></i> termes et condition
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="myDownloadForm" action="{% url 'estate:download_form' %}" method="post">
+                            {% csrf_token %}
+                            {{ form }}
+                        </form>
+                    </div>
+                </div>
+            {% else %}
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div  style="margin-top:130px; background-color: #1c2b36; border-radius:5px; padding:20px;">
+                            <h2 class="text-center" style="margin:0px;">Nous vous répondrons sous peu, veuillez patienter, vos informations sont validées. Je vous remercie.</h2>
+                            <button id="successOkBtn" class="btn btn-info btn-lg center-block" style="margin-top:15px"> d'accord </button>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            </div>
+
+            <div id="successDiv" class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                        <div  style="margin-top:130px; background-color: #1c2b36; border-radius:5px; padding:20px;">
+                            <h2 class="text-center" style="margin:0px;">Merci d'avoir téléchargé le formulaire. Nous vous répondrons peu de temps après que l'information sur le formulaire a été validée.</h2>
+                            <button id="successOkBtn" class="btn btn-info btn-lg center-block" style="margin-top:15px"> d'accord </button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script>
+        $(function(){
+            var $propertyChoices = $("#propertiesChoice");
+            var $property =  $("#id_property");
+            $property.val($propertyChoices.find('option:selected').val());
+            $(".download-btn").click(function (evt){
+                evt.preventDefault();
+                $("#id_is_downloaded").val(true);
+                $downloadForm.submit();
+            });
+            var $downloadForm = $("#myDownloadForm");
+            $downloadForm.submit(function(evt){
+                evt.preventDefault();
+                var data = $downloadForm.serialize();
+                $.post($downloadForm.attr('action'),data, function(_data){
+                    if(_data.success){
+                        $("#downloadDiv").hide();
+                        $("#successDiv").show();
+                    }
+                });
+            });
+
+            $propertyChoices.on('change',function(evt){
+                $property.val($propertyChoices.find('option:selected').val());
+            });
+
+            $("#successOkBtn").click(function(evt){
+                window.location = "estate/";
+            });
+
+        });
+    </script>
+{% endblock scripts %}
+

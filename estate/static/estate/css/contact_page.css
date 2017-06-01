@@ -1,35 +1,77 @@
-.banner{
-    height:300px;
-    /*background-image: url("/static/home.jpg");*/
-    /*background-repeat: no-repeat;*/
-    /*background-position: 50% 50%;*/
-    /*-webkit-background-size:cover;*/
-    /*background-size:cover;*/
-    margin:0px -15px;
+.banner {
+    height: 500px;
+    background-image: url("/static/man_and_woman.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 25%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    margin: 0px -15px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #1a242f;
 }
 
-#banner-content{
+#banner-content {
     flex: 1 1 auto;
 }
 
-#banner-content h1{
-    font-weight:bold;
-    font-size:3em;
-    color:white;
-    padding:5px;
+#banner-content h1 {
+    font-weight: bold;
+    font-size: 3em;
+    color: white;
+    padding: 5px;
 }
 
-.navbar-fixed-top{
-    position:fixed;
-    z-index:1000;
+.navbar-fixed-top {
+    position: fixed;
+    z-index: 1000;
     /*width:100%;*/
     background-color: #1a242f;
 }
 
-.contact-pane{
-    margin-top:50px;
+.contact-pane {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+}
+
+.form-pane {
+    margin-top: 30px;
+    padding: 5px 20px 20px;
+    background-color: whitesmoke;
+}
+
+.form-pane .btn{
+    margin-left:10px;
+}
+
+.contact-pane h1{
+    margin-bottom:30px;
+}
+
+#contactInfo{
+    margin-top:40px;
+}
+#contactInfo i{
+    padding: 15px;
+    border-radius: 50%;
+    background-color: gainsboro;
+}
+#contactInfo > div{
+    margin-bottom:10px;
+}
+
+@media all and (max-width: 768px) {
+    .contact-pane {
+        padding: 10px;
+    }
+
+    .banner {
+        height: 400px;
+        align-items: stretch;
+    }
+    #banner-content {
+        margin-top: 40px;
+    }
 }

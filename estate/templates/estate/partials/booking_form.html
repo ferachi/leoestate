@@ -1,0 +1,64 @@
+{% load bootstrap3 %}
+<div>
+    {% bootstrap_field booking_form.place form_group_class="" %}
+    <div class="row">
+        <div class="col-sm-6">
+            <div style="margin:20px 10px;">
+                {% bootstrap_field booking_form.first_name form_group_class="" addon_before='<i class="fa fa-user"></i>' %}
+                <p id="firstNameError" class="text-danger form-field-error"></p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div style="margin:20px 10px;">
+                {% bootstrap_field booking_form.last_name form_group_class="" addon_before='<i class="fa fa-user"></i>' %}
+                <p id="lastNameError" class="text-danger form-field-error"></p>
+            </div>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-sm-6">
+            <div style="margin:20px 10px;">{% bootstrap_field booking_form.email form_group_class="" addon_before='<i class="fa fa-envelope"></i>' %}
+                <p id="emailError" class="text-danger form-field-error"></p>
+            </div>
+
+        </div>
+        <div class="col-sm-6">
+            <div style="margin:20px 10px;">
+                {% bootstrap_field booking_form.phone_number form_group_class="" addon_before='<i class="fa fa-phone"></i>' %}
+                <p id="phoneNumberError" class="text-danger form-field-error"></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div style="margin:20px 10px;">{% bootstrap_field booking_form.schedule_date form_group_class="" %}</div>
+            <div>
+                <select class="form-control" id="bookingTime">
+            </select>
+            </div>
+            <p id="scheduleDateError" class="text-danger form-field-error"></p>
+        </div>
+        <div class="col-sm-6">
+            <div id="dateSelection">
+                <div id="notSelected">
+                    <p class="lead text-center">
+                        Sélectionnez l'une des dates de réservation disponibles en bleu
+                    </p>
+                </div>
+                <div id="dateSelected">
+                    <p  class="lead text-center">vous avez sélectionné</p>
+                    <h2 id="displaySelectedTime" class="text-center text-primary"><strong></strong></h2>
+                    <h3 id="displaySelectedDate" class="text-center text-primary"><strong></strong></h3>
+                    <p id="selectedText" class="text-center">comme date de votre réservation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div style="margin:20px 10px;">{% bootstrap_field booking_form.message form_group_class="" %}
+                <p id="messageError" class="text-danger form-field-error"></p></div>
+        </div>
+    </div>
+
+</div>

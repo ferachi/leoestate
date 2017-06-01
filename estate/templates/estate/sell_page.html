@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'estate/css/sell_page.css' %}">
+{% endblock links %}
+
+{% block content %}
+    <div id="sellerPane" class="row">
+        <div class="col-sm-12" >
+            <div class="row" style="background-color:whitesmoke;">
+                <div class="col-sm-9 col-sm-offset-2">
+                    <div style="padding-bottom:20px;">
+                        <div class="row">
+                            <h2 class="text-center" style="margin:40px 0px;"> ESPACE <strong class="">VENDEUR </strong></h2>
+                            <div id="descriptionBox">
+
+                                <div class="col-sm-4 col-sm-offset-0">
+
+                                    <img src="{% static 'man_holds_house.jpg' %}" alt="" class="img-responsive">
+                                </div>
+                                <div class="col-sm-8">
+                                    <div>
+                                        <p class="lead">
+                                            Vous souhaitez vendre votre bien au meilleur prix et dans les meilleurs délais?
+                                        </p>
+                                        <p class="">
+                                            Votre annonce sera publiée sur les sites avec le plus de visiteurs afin de bénéficier d'une visibilité inégalée  : Seloger.com, Avendrealouer, Leboncoin…
+                                        </p>
+                                        <p>
+                                            Nous publions votre annonce immédiatement à la signature du mandat de vente et nous vous accompagnerons tout au long de la vente avec un suivi personnalisé.
+                                            Appuyés par des experts (notaires, banques, juristes), nous sommes en mesure de vous garantir une transaction sécurisée.
+
+                                        </p>
+                                        <p>
+                                            Une fois l'estimation de votre bien réalisée, il vous faudra choisir le mandat de vente
+                                            Si le prix que nous vous proposons est en phase avec vos attentes, un mandat exclusif de 3 mois est le mieux, permettant d'offrir le plus d'information à l'acheteur et une éventuelle réduction des frais d'agence afin d'obtenir les meilleurs délais de vente
+                                            Avec un mandat exclusif, pendant la durée choisie, ici 3 mois, vous ne pouvez pas vendre votre bien vous-même ou avec une autre agence.
+                                            Vous pouvez bien sûr choisir un mandat simple sans exclusivité si vous le souhaitez.
+                                            Si le prix que nous vous proposons est inférieur à vos attentes, nous pouvons vendre votre bien à votre prix si vous optez pour un mandat exclusif de 2 ans. Dans ce cas nos commissions augmentent de 1000€ à chaque trimestre afin d'amortir nos frais qui augmentent. Vous pourrez réviser le prix à la baisse à n'importe quel moment si vous le souhaitez.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="flowChart">
+                    <div>
+                        <div>
+                            <h3 class="text-center sp-bold text-uppercase">Vente</h3>
+                            <img src="{% static 'vente_flowchart.svg' %}" onerror="this.src='{% static 'vente_flowchart.png' %}'" class="img-responsive center-block" alt="">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <h3 class="text-center sp-bold text-uppercase">Estimation gratuite</h3>
+                            <img src="{% static 'gratuite_flowchart.svg' %}" onerror="this.src='{% static 'gratuite_flowchart.png' %}'" class="img-responsive center-block" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <form novalidate action="{% url 'estate:client_property'  %}" id="clientForm">
+                        {% csrf_token %}
+                        <div class="row" id="clientForms">
+                            <div class="col-sm-10 col-sm-offset-1">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="estimate-option pull-right">
+                                            <div class="radio">
+                                                <label class="inline-radio">
+                                                    <input type="radio" name="client-client_type" id="sellRadio" value="VE" checked on> {{ "Vendre mon bien"|upper }}
+                                                </label>
+                                                <label class="inline-radio">
+                                                    <input type="radio" name="client-client_type" id="estimateRadio" value="ES"> {{ "Faire Estimer mon bien gratuitement"|upper }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="formContainer">
+                                    <div class="row">
+                                        <div class="col-sm-4"><img src="{% static 'estimate_property_2.png' %}" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div>
+                                                <div id="formsHolder">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="col-sm-12">
+                                                                <ul id="myTabs" class="nav nav-pills">
+                                                                    <li class="active"><a href="#stepOne" data-toggle="tab">ÉTAPE 1</a></li>
+                                                                    <li class="disabled"><a href="#stepTwo" data-toggle="tab">ÉTAPE 2</a></li>
+                                                                    <li class="disabled"><a href="#stepThree" data-toggle="tab">ÉTAPE 3</a></li>
+                                                                </ul>
+                                                                <div id="myTabContent" class="tab-content">
+                                                                    <div class="tab-pane fade active in" id="stepOne">
+                                                                        <div>
+
+                                                                            <div class="row">
+                                                                                <div class="col-sm-6">
+                                                                                    <div>
+                                                                                        {% bootstrap_field form.property_type form_group_class="" addon_before='<i class="fa fa-home"></i>' %}
+                                                                                        <p id="propertyTypeError" class="text-danger form-field-error"></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <div>
+                                                                                        {% bootstrap_field form.no_rooms form_group_class="" addon_before='<i class="fa fa-object-group"></i>' %}
+                                                                                        <p id="noRoomsError" class="text-danger form-field-error"></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-6">
+                                                                                    <div>
+                                                                                        {% bootstrap_field form.land_area form_group_class="" addon_before='<i class="fa fa-area-chart"></i>' %}
+                                                                                        <p id="landAreaError" class="text-danger form-field-error"></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <div>
+                                                                                        {% bootstrap_field form.no_bathrooms form_group_class="" addon_before='<i class="fa fa-object-group"></i>' %}
+                                                                                        <p id="noBathroomsError" class="text-danger form-field-error"></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-6">
+                                                                                    <div>
+                                                                                        {% bootstrap_field form.area form_group_class="" addon_before='<i class="fa fa-area-chart"></i>' %}
+                                                                                        <p id="areaError" class="text-danger form-field-error"></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <div>
+                                                                                        {% bootstrap_field form.price form_group_class="" addon_before='<i class="fa fa-money"></i>' %}
+                                                                                        <p id="priceError" class="text-danger form-field-error"></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12">
+                                                                                    <div>
+                                                                                        {% bootstrap_field form.address form_group_class="" addon_before='<i class="fa fa-street-view"></i>' %}
+                                                                                        <p id="addressError" class="text-danger form-field-error"></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-6">
+                                                                                    <div>
+                                                                                        {% bootstrap_field form.postal_code form_group_class="" addon_before='<i class="fa fa-paper-plane"></i>' %}
+                                                                                        <p id="postalCodeError" class="text-danger form-field-error"></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <div>
+                                                                                        {% bootstrap_field form.city form_group_class="" addon_before='<i class="fa fa-map-marker"></i>' %}
+                                                                                        <p id="cityError" class="text-danger form-field-error"></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12">
+                                                                                    <button type="button" id="stepOneSubmitBtn" class="btn btn-default pull-right">ÉTAPE 2 &nbsp;&nbsp;<i class="fa fa-chevron-right"></i></button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="tab-pane fade" id="stepTwo">
+                                                                        <div>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-10">
+                                                                                    <div>
+                                                                                        <div class="row" style="margin-top:0px; margin-bottom:0px;">
+                                                                                            <div class="col-xs-3 col-sm-3">
+                                                                                                <label class="checkbox-inline">
+                                                                                                    <input name="client-facilities" type="checkbox" class="inline-checkbox" id="inlineCheckbox1" value="Parking"> Parking
+                                                                                                </label>
+                                                                                            </div>
+                                                                                            <div class="col-xs-3 col-sm-3">
+                                                                                                <label class="checkbox-inline">
+                                                                                                    <input name="client-facilities" type="checkbox" class="inline-checkbox" id="inlineCheckbox2" value="Cave"> Cave
+                                                                                                </label>
+                                                                                            </div>
+
+
+                                                                                            <div class="col-xs-6 col-sm-4">
+                                                                                                <label class="checkbox-inline">
+                                                                                                    <input name="client-facilities" type="checkbox" class="inline-checkbox" id="inlineCheckbox3" value="Vue exceptionnelle"> Vue exceptionnelle
+                                                                                                </label>
+                                                                                            </div>
+
+                                                                                            <div class="col-xs-3 col-sm-2">
+                                                                                                <label class="checkbox-inline">
+                                                                                                    <input name="client-facilities" type="checkbox" class="inline-checkbox" id="inlineCheckbox4" value="Terrasse"> Terrasse
+                                                                                                </label>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-6">
+                                                                                    <div>
+                                                                                        {% bootstrap_field form.year_constructed form_group_class="" addon_before='<i class="fa fa-calendar"></i>' %}
+                                                                                        <p id="yearConstructedError" class="text-danger form-field-error"></p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-6">
+                                                                                    <div>
+                                                                                        {% bootstrap_field form.selling_status form_group_class="" addon_before='<i class="fa fa-calendar"></i>' %}
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-sm-6">
+                                                                                    <button type="button" id="stepOneBackBtn" class="btn btn-default"><i class="fa fa-chevron-left"></i> &nbsp; &nbsp; ÉTAPE 1 </button>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <button type="button" id="stepTwoSubmitBtn" class="btn btn-default pull-right">ÉTAPE 3 &nbsp;&nbsp;<i class="fa fa-chevron-right"></i></button>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="tab-pane fade" id="stepThree">
+                                                                        {% include 'estate/partials/booking_form.html' %}
+                                                                        <div class="col-sm-6">
+                                                                            <button type="button" id="stepTwoBackBtn" class="btn btn-default"><i class="fa fa-chevron-left"></i> &nbsp; &nbsp; ÉTAPE 2 </button>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <button type="submit" class="btn btn-info  pull-right">
+                                                                                <i class="fa fa-paper-plane fa-lg"></i> soumettre
+                                                                            </button>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="finish">
+                                                    <div class="row">
+                                                        <div class="col-sm-8 col-sm-offset-2">
+                                                            <div class="text-center">
+                                                                <h3 class="">Thank you for completing the form. Your form has been sent. We would get back to you shortly.</h3>
+                                                                <button type="button" id="thankYouBtn" class="btn btn-info">accord</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'estate/js/sell_page.js' %}"></script>
+{% endblock scripts %}

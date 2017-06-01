@@ -14,6 +14,11 @@ class AddressInline(admin.StackedInline):
 # 		AddressInline
 # 	]
 
+@admin.register(Place)
+class PlaceAdmin(admin.ModelAdmin):
+	inlines = [
+		AddressInline
+	]
 
 @admin.register(BuyablePlace)
 class BuyablePlaceAdmin(admin.ModelAdmin):
@@ -29,3 +34,8 @@ admin.site.register(OtherField)
 admin.site.register(UserProfile)
 admin.site.register(Question)
 admin.site.register(Answer)
+admin.site.register(BookingDate)
+admin.site.register(BookingSchedule)
+admin.site.register(ClientProperty)
+admin.site.register(FormDownload)
+admin.site.register(PropertyDocument)

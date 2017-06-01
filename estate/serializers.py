@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import  Place, PropertyImage, RentablePlace, BuyablePlace, Address, ThreeDView, Facility, OtherField
+from .models import  Place, PropertyImage, BuyablePlace, Address, ThreeDView, Facility, OtherField
 
 
 class PropertyImageSerializer(serializers.ModelSerializer):
@@ -20,10 +20,10 @@ class ThreeDViewSerializer(serializers.ModelSerializer):
 		fields = '__all__'
 
 
-class RentablePlaceSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = RentablePlace
-		fields = ['duration', 'is_rented', 'duration_type', 'total_duration_months']
+# class RentablePlaceSerializer(serializers.ModelSerializer):
+# 	class Meta:
+# 		model = RentablePlace
+# 		fields = ['duration', 'is_rented', 'duration_type', 'total_duration_months']
 
 
 class BuyablePlaceSerializer(serializers.ModelSerializer):
@@ -51,7 +51,6 @@ class PlaceSerializer(serializers.ModelSerializer):
 	address = AddressSerializer()
 	three_d_views = ThreeDViewSerializer
 	images = PropertyImageSerializer(many=True)
-	rentableplace = RentablePlaceSerializer()
 	buyableplace = BuyablePlaceSerializer()
 	class Meta:
 		model = Place

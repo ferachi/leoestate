@@ -13,7 +13,7 @@ var app = angular.module('place.components', []);
  * @desc component to handle search  for Place Module
  */
 app.component('search', {
-    templateUrl:'/https://s3.amazonaws.com/EstateManager/place/templates/place_search.component.html',
+    templateUrl:'/static/place/templates/place_search.component.html',
     controller:'SearchCtrl',
     bindings : {
         searchExp : '=',
@@ -43,7 +43,7 @@ app.controller('SearchCtrl', ['$timeout',function($timeout){
  * @desc component to handle quick search within the search component
  */
 app.component('searchBar', {
-    templateUrl:'/https://s3.amazonaws.com/EstateManager/place/templates/place_search-bar.component.html',
+    templateUrl:'/static/place/templates/place_search-bar.component.html',
     controller:'SearchBarCtrl',
     bindings : {
         searchExp : "="
@@ -94,7 +94,7 @@ app.controller('SearchBarCtrl', [function(){
  * @desc component to handle advanced search within the search component
  */
 app.component('searchPane', {
-    templateUrl:'/https://s3.amazonaws.com/EstateManager/place/templates/place_search-pane.component.html',
+    templateUrl:'/static/place/templates/place_search-pane.component.html',
     controller:'SearchPaneCtrl',
     bindings : {
         searchExp : '=',
@@ -123,6 +123,7 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
         angular.copy(this.options['facilities'] , this._facilityOptions);
         angular.copy(this.options['propertyTypes'] , this._propertyTypeOptions);
         angular.copy(this.options['otherFields'] , this._otherOptions);
+        this._noOfRoomOptions = [{id:1, val:"1"},{ id:2, val:"2"}, {id:3, val : "3"}, {id:4, val:"4"}, {id:5, val:"5"}, {id:6, val:"6+"}];
 
         this.purchaseType = "";
         this.purchaseTypes = [
@@ -143,15 +144,21 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
         this.age = "";
         this.duration = "m";
         this.propertyType = "";
-        this.price = [0,10000];
-        this.area = [0,1000];
-        this.rooms = [0,10];
-        this.priceMinMax = [0,10000]
-        this.areaMinMax = [0,1000];
-        this.roomMinMax = [0,10];
+        this.price = [0,1000000];
+        this.area = "";
+        this.rooms ="";
+        this.priceMinMax = [0,1000000];
 
         self.searchExp  = function(values,index){
-            if(!values["address"]['location'].toLowerCase().startsWith(self.location.toLowerCase())) return false;
+            var location = parseInt(self.location);
+            if(!isNaN(location)){
+                var zipcode = values["address"]['zip_code']+'';
+                var _zip = self.location + '';
+                if(!zipcode.startsWith(_zip)) return false;
+            }
+            else{
+                if(!values["address"]['location'].toLowerCase().startsWith(self.location.toLowerCase())) return false;
+            }
 
             if(!values["property_type"].startsWith(self.propertyType)) return false;
 
@@ -162,19 +169,21 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
                 if(self.price[0] > parseInt(values['price'])) return false;
             }
 
-            if(self.area[1] < self.areaMinMax[1]){
-                if(self.area[1] < parseInt(values['area'])  || self.area[0] > parseInt(values['area'])) return false;
+            if(self.area && self.area > parseInt(values['area'])) return false;
+
+            if(self.rooms && self.rooms < 6){
+                if(self.rooms < parseInt(values['no_rooms'])) return false;
             }
-            else{
-                if(self.area[0] > parseInt(values['area'])) return false;
+            else if(self.rooms && self.rooms >= 6){
+                if(self.rooms > parseInt(values['no_rooms'])) return false;
             }
 
-            if(self.rooms[1] < self.roomMinMax[1]){
-                if(self.rooms[1] < parseInt(values['no_rooms'])  || self.rooms[0] > parseInt(values['no_rooms'])) return false;
-            }
-            else{
-                if(self.rooms[0] > parseInt(values['no_rooms'])) return false;
-            }
+            // if(self.rooms[1] < self.roomMinMax[1]){
+            //     if(self.rooms[1] < parseInt(values['no_rooms'])  || self.rooms[0] > parseInt(values['no_rooms'])) return false;
+            // }
+            // else{
+            //     if(self.rooms[0] > parseInt(values['no_rooms'])) return false;
+            // }
 
 
             // returns an array of the  name fields in facilities
@@ -213,6 +222,10 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
             }
             return true
         }
+    };
+
+    this.change = function(){
+        console.log(this.room)
     }
     this.facilitiesChanged = function(){
         var self = this;
@@ -285,7 +298,7 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
  */
 
 app.component('map', {
-    templateUrl:'/https://s3.amazonaws.com/EstateManager/place/templates/place_map.component.html',
+    templateUrl:'/static/place/templates/place_map.component.html',
     controller:'MapCtrl',
     bindings:{
         places:"=",
@@ -300,53 +313,115 @@ app.component('map', {
  * @type {Controller}
  * @desc controller for the map component
  */
-app.controller('MapCtrl', ['$filter','$scope','$interval',function($filter, $scope, $timeout){
+app.controller('MapCtrl', ['$filter','$scope','$interval', '$http',function($filter, $scope, $timeout,$http){
     this.title = "Map";
     var self = this;
     self.placeCount;
     this.$onInit = function(){
         var filter = $filter('filter');
-        var _places;
-        
+        var _places, villes, latCenter, longCenter;
+
+        $http.get("/static/location_final.json").then(function(response){
+            villes = response.data;
+        }, function(err){
+            console.log(err);
+        });
+
         $scope.places = this.places;
         $timeout(function(){
             $scope.places = filter(self.places,self.searchExp);
         },10);
         $scope.$watchCollection('places',function(n,o){
-            _places = [];
-            $scope.places.forEach(function(place){
-                var lat= parseFloat(place.address.latitude);
-                var lng= parseFloat(place.address.longitude);
-                var latlng = {lat:lat, lng:lng};
-                var title = place.title;
-                var price = place.price;
-                var slug = place.slug;
-                var imgUrl= place.image;
-                _places.push({title:title, latlng:latlng, image:imgUrl, price:price, slug:slug});
-            });
-            self.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            console.log(n==o)
+            if(n !== o) {
+                _places = [];
+                var ville;
+                $scope.places.forEach(function (place) {
+                    var lat = parseFloat(place.address.latitude);
+                    var lng = parseFloat(place.address.longitude);
+                    var zip = parseInt(place.address.zip_code);
+                    var location = place.address.location;
+                    var latlng = {lat: lat, lng: lng};
+                    var title = place.title;
+                    var price = place.price;
+                    var slug = place.slug;
+                    var imgUrl = place.image;
+                    _places.push({title: title, latlng: latlng, zip:zip,location:location, image: imgUrl, price: price, slug: slug});
+                });
 
-            _places.forEach(function(place){
-                var marker = new google.maps.Marker({
-                    position: place.latlng,
-                    title:place.title,
-                    map : self.map,
+                if(_places.length > 0){
+
+
+
+                    var city = _places[0].location.toUpperCase();
+                    var zip = _places[0].zip;
+
+                    var sameCity = _.every(_places,function(place){
+                        return place.location == city;
+                    });
+                    var sameZip = _.every(_places,function(place){
+                        return place.zip == zip;
+                    });
+                    console.log(sameCity, sameZip);
+                    if(sameCity){
+                        ville = _.findWhere(villes, {place:city});
+                    }
+                    else if(sameZip){
+                        ville = _.findWhere(villes, {zip:zip});
+                    }
+                    else{
+                        ville = null;
+                    }
+
+                    // if the location field is not empty
+                    if(ville){
+                        latCenter = ville.latitude;
+                        longCenter = ville.longitude;
+                    }
+                    else{
+                        // location field must be empty or different locations where selected
+                        latCenter = _places.map(function (place){
+                            return place.latlng.lat;
+                        }).reduce(function (acc, val, index, list) {
+                            if (index == list.length - 1) return (acc + val) / list.length;
+                            else return acc + val;
+                        });
+                        longCenter = _places.map(function (place) {
+                            return place.latlng.lng;
+                        }).reduce(function (acc, val, index, list) {
+                            if (index == list.length - 1) return (acc + val) / list.length;
+                            else return acc + val;
+                        });
+                    }
+                }
+                else{
+                    latCenter = 45;
+                    longCenter = 5;
+                }
+                console.log(_places,latCenter, longCenter);
+                var center = {lat: latCenter, lng: longCenter};
+                var mapOptions = {
+                    zoom: 10,
+                    center: center,
+                    mapTypeControl: false,
+                };
+                self.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+                _places.forEach(function (place) {
+                    var marker = new google.maps.Marker({
+                        position: place.latlng,
+                        title: place.title,
+                        map: self.map,
+                    });
+                    marker.addListener('click', function () {
+                        infowindow.setContent(contentInfo(place.image, place.title, place.price))
+                        infowindow.open(map, marker);
+                    });
                 });
-                marker.addListener('click', function() {
-                    infowindow.setContent(contentInfo(place.image, place.title, place.price))
-                    infowindow.open(map, marker);
-                });
-            });
+            }
+
         });
 
-
-
-        var center = {lat: 46.310525, lng: 2.621262};
-        var mapOptions = {
-            zoom: 6,
-            center: center,
-            mapTypeControl:false,
-        };
         var infowindow = new google.maps.InfoWindow({
             maxWidth:200
         });
@@ -371,7 +446,7 @@ app.controller('MapCtrl', ['$filter','$scope','$interval',function($filter, $sco
  */
 
 app.component('propertyList', {
-    templateUrl:'/https://s3.amazonaws.com/EstateManager/place/templates/place_property-list.component.html',
+    templateUrl:'/static/place/templates/place_property-list.component.html',
     controller:'PropertyListCtrl',
     bindings : {
         places : "=",
@@ -418,7 +493,7 @@ app.controller('PropertyListCtrl', [function(){
  * @desc component that is a thumbnail for each individual place
  */
 app.component('propertyPalette',{
-        templateUrl: '/https://s3.amazonaws.com/EstateManager/place/templates/place_property-palette.component.html',
+        templateUrl: '/static/place/templates/place_property-palette.component.html',
         controller : 'PropertyPaletteController',
         bindings:{
             property:'=place',
@@ -452,7 +527,7 @@ app.controller('PropertyPaletteController', ["$location",function($location){
  * @desc component that is a thumbnail for each individual place
  */
 app.component('propertySummary',{
-        templateUrl: '/https://s3.amazonaws.com/EstateManager/place/templates/place_property-summary.component.html',
+        templateUrl: '/static/place/templates/place_property-summary.component.html',
         controller : 'PropertySummaryController',
         bindings:{
             property:'=place',

@@ -10,6 +10,7 @@
 
 {% endblock links %}
 {% block content %}
+    <div>
     {% verbatim %}
     <div class="row" ng-app="App" ng-cloak>
         <div class="col-12" ng-controller="MainController">
@@ -19,8 +20,10 @@
     </div>
 
     {% endverbatim %}
+    </div>
 {% endblock content %}
 {% block footer %}
+    {{ block.super }}
 {% endblock footer %}
 {% block scripts %}
     {{ block.super }}

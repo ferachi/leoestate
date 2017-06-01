@@ -7,70 +7,98 @@
 
 
 {% block content %}
-
-    <div class="row">
+    <div class="row" id="indexPage">
         <div class="col-sm-12">
-            <div class="banner text-center">
-                <div id="banner-content">
-                    <div class="col-sm-offset-4 col-sm-4" >
-                        <h1 class="sp-font">Buy and Sell your Houses 100% Online</h1>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <div class="col-sm-6 text-center">
-                <div class="buy-sell">
-                    <h3 class="sp-font">Sell your House</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam at cumque, doloremque dolores facere ipsam ipsum laboriosam.</p>
-                    <a href="{% url 'estate:about' %}" class="btn btn-primary btn-lg">Sell your house</a>
-                </div>
-            </div>
-            <div class="col-sm-6 text-center">
-                <div class="buy-sell">
-                    <h3 class="sp-font">Buy your House</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam at cumque, doloremque dolores facere ipsam ipsum laboriosam.</p>
-                    <a href="{% url 'estate:estate' %}" class="btn btn-warning btn-lg">Buy your house</a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div id="ad-row" class="row">
-        <div class="col-sm-8 col-sm-offset-2">
             <div class="row">
-                <div class="col-sm-3 ad-bar text-center">
-                    <p class="sp-font lead">Warranties on houses</p>
-                    <div class="">
+                <div class="col-sm-12">
+                    <div class="banner text-center">
+                        <div id="banner-content">
+                            <div class="col-sm-offset-3 col-sm-6" >
+                                <div class="headers">
+                                    <h2 class="sp-font">"Le plus haut dans la transparence"</h2>
+                                    <h4 class="sp-font">Pourquoi se passer d'une agence à ce prix là ?</h4>
+                                </div>
 
-                        <i class="fa fa-home fa-5x"></i>
-                    </div>
-                </div>
-                <div class="col-sm-3 ad-bar text-center">
-                    <p class="lead">Guaranteed satisfaction</p>
-                    <div class="">
+                            </div>
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-2 col-sm-offset-4" style="padding:0px"><a class="btn btn-danger btn-block pull-right" href="">Voir la video</a></div>
+                            <div class="col-sm-2" style="padding:0px;"><a href="{% url 'estate:how_it_works' %}" class="btn btn-default btn-block pull-left">Comment ca marche?</a></div>
+                        </div>
 
-                        <i class="fa fa-heart fa-5x"></i>
-                    </div>
-                </div>
-                <div class="col-sm-3 ad-bar text-center">
-                    <p class="lead">Round the clock response</p>
-                    <div class="">
-                        <i class="fa fa-clock-o fa-5x"></i>
-                    </div>
-                </div>
-                <div class="col-sm-3 ad-bar text-center">
-                     <p class="lead">Friendly prices</p>
-                    <div class="">
-
-                        <i class="fa fa-money fa-5x"></i>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-sm-6" style="background-color: white;">
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-2 text-center" >
+                            <div class="buy-sell">
+                                <h3 class="sp-font sp-bold">Estimer et vendre</h3>
+                                <p>Commission de seulement 3900&euro; à la charge de l'acheteur si la vente s'effectue
+                                </p>
+                                <a href="{% url 'estate:about' %}" class="btn btn-info btn-lg">Estimer et vendre</a>
+                            </div>
+                        </div>
 
+                    </div>
+
+                </div>
+                <div class="col-sm-6" style="background-color: whitesmoke;">
+                    <div class="row">
+                        <div class="col-sm-10 text-center">
+                            <div class="buy-sell">
+                                <h3 class="sp-font sp-bold">Achetez votre maison</h3>
+                                <p>Le maximum d'information disponible pour évaluer sereinement les biens
+                                </p>
+                                <a href="{% url 'estate:estate' %}" class="btn btn-primary btn-lg">Achetez votre maison</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="ad-row" class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="row">
+                        <div class="col-sm-3 ad-bar">
+                            <h4 class="sp-bold text-center text-uppercase">Expertise garantie</h4>
+                            <div class="text-center">
+                                <i style="color:whitesmoke" class="fa fa-home fa-5x"></i>
+                            </div>
+                            <p class="sp-font">Les biens sont systématiquement inspecté par un expert indépendant dont le rapport est mis à la disposition de l'acheteur et du vendeur</p>
+
+                        </div>
+                        <div class="col-sm-3 ad-bar ">
+                            <h4 class="sp-bold text-center text-uppercase">Qualité de service garantie</h4>
+                            <div class="text-center">
+                                <i style="color:whitesmoke" class="fa fa-thumbs-up fa-5x"></i>
+                            </div>
+                            <p class="sp-font" style="">Vous pouvez noter le service que nous vous fournissons et voir les notes que nous avons reçus
+                            </p>
+
+                        </div>
+                        <div class="col-sm-3 ad-bar ">
+                            <h4 class="sp-bold text-center text-uppercase">Meilleurs délais</h4>
+                            <div class="text-center">
+                                <i style="color:whitesmoke" class="fa fa-clock-o fa-5x"></i>
+                            </div>
+                            <p class="sp-font">Nous vous répondons dans les 12h. Pour les délais de vente nous visons des délais inférieurs à 15 jours.</p>
+
+                        </div>
+                        <div class="col-sm-3 ad-bar ">
+                            <h4 class="sp-bold text-center text-uppercase">Le meilleur prix</h4>
+                            <div class="text-center">
+                                <i style="color:whitesmoke" class="fa fa-money fa-5x"></i>
+                            </div>
+                            <p class="sp-font">Comparez… vous trouverez difficilement moins cher.</p>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
+
 {% endblock content %}

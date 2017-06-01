@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'estate/css/work_page.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="row" id="workPage">
+        <div class="col-sm-12">
+            <div class="banner">
+                <div id="banner-content" class="sp-font">
+                    <div class="col-sm-12">
+                        <div id="headers">
+                            <h1 class="sp-font sp-bold pull-right">Comment ça marche?</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+
+
+                <div class="col-sm-offset-1 col-sm-10">
+                    <div style="margin-top:20px; padding:10px; background-color: gainsboro;">
+                        <p class="text-center lead">Pour toute question non répondue ci-dessous nous vous invitons à poser
+                            vos questions à contact@altissimmo.fr</p>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="faq">
+                        <h4 class="sp-bold">Pourquoi la commission est si faible par rapport à d'autres agences ? La qualité
+                            est-elle moindre ?</h4>
+                        <p>Les agences "classiques" facturent la commission en % du prix du vente. Pourtant le travail réalisé
+                            est le même pour un bien à 100k€ ou 200k€. Rien ne justifie un écart de commission.</p>
+                        <p>En optimisant le processus de vente grâce à une plus grande transparence aidé des visites virtuelles
+                            3D et de photos de bonnes qualités couplé à la géolocalisation et les diagnostiques mis en ligne à
+                            disposition de l'acheteur nous évitons aux acheteurs de se déplacer pour rien et nous gagnons du
+                            temps, donc de l'argent, que nous vous redonnons. De plus nous sommes 100% en ligne, nous n'avons
+                            pas de bureaux bien situés à payer. En fait nous prétendons même vous fournir une qualité supérieure
+                            parce que nous dépensons notre temps que pour l'essentiel et travaillons qu'avec des professionnels
+                            qui partagent cette philosophie.</p>
+                        <h4 class="sp-bold">Comment se passe la prise de rendez vous pour la vente ou l'achat ?</h4>
+                        <p>Vous choisissez l'heure et le jour en ligne avec l'outil mis à disposition et nous vous recontactons
+                            pour confirmer</p>
+
+                        <h4 class="sp-bold">Comment pré-estimer mon bien ?</h4>
+                        <p>Vous pouvez utiliser le site meilleursagents.com et si vous voulez quelque chose de plus précis
+                            encore il y a PATRIM sur impots.gouv.fr. Attention sur PATRIM ce sont les prix après déduction des
+                            meubles. De même, certains biens peuvent être peu cher car avec beaucoup de travaux, mais ce sont
+                            les vrais prix notariaux. Cela vous donnera une idée approximative du prix au m² que nous affinerons
+                            en fonction des spécificités locales et du bien lui-même.</p>
+
+                        <h4 class="sp-bold">Comment se passe la vente ?</h4>
+                        <p>Comme vous pouvez le voir sur la section vente, il y a d'abord une estimation de faite, ensuite un
+                            choix de mandat. A partir de là nous mettons le bien en annonce en ligne. Dès que nous avons un
+                            acheteur fiable intéressé, nous passons à la promesse de vente.</p>
+
+                        <h4 class="sp-bold">Comment se passe l'achat ?</h4>
+                        <p>Pour l'achat, après avoir visité le bien, si le bien vous intéresse vous nous faites une proposition
+                            en nous envoyant votre dossier avec les pièces demandées. Si le propriétaire accepte, nous passons à
+                            la promesse de vente. Nous attendons des acheteurs qu'ils aient fait au préalable une simulation
+                            réaliste sur
+                            http://www.meilleurtaux.com/credit-immobilier/simulation-de-pret-immobilier/calcul-des-mensualites.html
+                            afin de vérifier que leur banque ne refusera pas le prêt.</p>
+
+                        <h4 class="sp-bold">Votre agence me paraît si bien, pourquoi ne pas l'avoir ouverte plus tôt ?</h4>
+                        <p>Nous n'avions pas conscience de l'état du secteur de la vente immobilière avant de passer nous-même
+                            par des agences. Bien d'autres choses seront réalisées prochainement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

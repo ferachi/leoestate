@@ -7,7 +7,7 @@
     {% block links %}
         {% include 'partials/stylesheets.html' %}
     {% endblock links %}
-    <title>{% block title %}Leo Altman{% endblock title %}</title>
+    <title>{% block title %}Altissimmo{% endblock title %}</title>
 </head>
 <body>
 {% block navbar %}
@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-sm-12">
-        <div id="user" {% if user.is_authenticated %}data-is-authenticated="true" {% else %}data-is-authenticated="false" {% endif %}></div>
+        <div id="user" {% if user.is_authenticated %}data-is-authenticated="true" data-user-id="{{ user.pk }}" {% else %}data-is-authenticated="false" {% endif %}></div>
             {% block content %}
             {% endblock content %}
         </div>
@@ -26,7 +26,7 @@
 </div>
 {% block footer %}
 <div class="footer text-center">
-    <p> <i class="fa fa-copyright "></i> 2017 leo-altmann - All rights reserved.</p>
+    <p> <i class="fa fa-copyright "></i> 2017 Altissimmo - tous les droits sont réservés.</p>
 </div>
 {% endblock footer %}
 {% block scripts %}

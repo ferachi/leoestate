@@ -113,6 +113,7 @@
       <column name="longitude" sqlType="DECIMAL" precision="0" scale="-1" nullable="false" jdbcType="6"/>
       <column name="place_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="postal_code" sqlType="VARCHAR(10)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="zip_code" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
       <foreign-key name="#FAKE_estate_address_1" columns="place_id" ref-table="estate_place" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
     </table>
@@ -129,18 +130,71 @@
       <index name="estate_answer_7aa0f6ee" unique="true" columns="question_id"/>
       <index name="estate_answer_user_profile_id_68a8ba32_uniq" unique="true" columns="user_profile_id,question_id"/>
     </table>
+    <table name="estate_bookingdate" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="scheduled_date" sqlType="DATE" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="is_fully_booked" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+    </table>
+    <table name="estate_bookingschedule" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="first_name" sqlType="VARCHAR(30)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR(30)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR(50)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="phone_number" sqlType="VARCHAR(15)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="message" sqlType="TEXT" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="schedule_date" sqlType="DATE" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="created_date" sqlType="DATE" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="place_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_estate_bookingschedule_1" columns="place_id" ref-table="estate_place" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="estate_bookingschedule_62becf4a" unique="true" columns="place_id"/>
+    </table>
     <table name="estate_buyableplace" schema="" catalog="" type="TABLE">
       <column name="place_ptr_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="is_sold" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="place_ptr_id"/>
       <foreign-key name="#FAKE_estate_buyableplace_1" columns="place_ptr_id" ref-table="estate_place" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
     </table>
+    <table name="estate_clientproperty" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="property_type" sqlType="VARCHAR(2)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="no_rooms" sqlType="VARCHAR(1)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="land_area" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="no_bathrooms" sqlType="VARCHAR(1)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="area" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="address" sqlType="VARCHAR(400)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="postal_code" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="city" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="year_constructed" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="selling_status" sqlType="VARCHAR(1)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="facilities" sqlType="VARCHAR(300)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="booking_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
+      <column name="client_type" sqlType="VARCHAR(2)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="price" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_estate_clientproperty_1" columns="booking_id" ref-table="estate_bookingschedule" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="estate_clientproperty_b0060af7" unique="true" columns="booking_id"/>
+    </table>
     <table name="estate_facility" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR(120)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
-      <column name="quantity" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="quantity" sqlType="VARCHAR(6)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
       <index name="estate_facility_name_635015ae_uniq" unique="true" columns="name,quantity"/>
+    </table>
+    <table name="estate_formdownload" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="is_downloaded" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="is_valid" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="url" sqlType="VARCHAR(200)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="property_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_estate_formdownload_1" columns="user_id" ref-table="estate_userprofile" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_estate_formdownload_2" columns="property_id" ref-table="estate_place" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="estate_formdownload_e8701ad4" unique="true" columns="user_id"/>
+      <index name="estate_formdownload_6bb837ff" unique="true" columns="property_id"/>
     </table>
     <table name="estate_otherfield" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
@@ -212,23 +266,15 @@
       <column name="content" sqlType="TEXT" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="date" sqlType="DATETIME" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="place_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="user_profile_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <column name="email" sqlType="VARCHAR(254)" precision="0" scale="-1" nullable="true" jdbcType="12"/>
       <column name="name" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
-      <column name="user_profile_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
+      <column name="is_validated" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
       <foreign-key name="#FAKE_estate_question_1" columns="user_profile_id" ref-table="estate_userprofile" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_estate_question_2" columns="place_id" ref-table="estate_place" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <index name="estate_question_06037614" unique="true" columns="user_profile_id"/>
       <index name="estate_question_62becf4a" unique="true" columns="place_id"/>
-    </table>
-    <table name="estate_rentableplace" schema="" catalog="" type="TABLE">
-      <column name="place_ptr_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="duration" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="is_rented" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="duration_type" sqlType="VARCHAR(1)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
-      <column name="total_duration_months" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="true" jdbcType="4"/>
-      <primary-key columns="place_ptr_id"/>
-      <foreign-key name="#FAKE_estate_rentableplace_1" columns="place_ptr_id" ref-table="estate_place" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
     </table>
     <table name="estate_threedview" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>

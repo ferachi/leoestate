@@ -1,0 +1,32 @@
+#workPage{
+    margin-top:40px;
+    min-height: 90vh;
+}
+
+
+.banner{
+    min-height:350px;
+    background-image: url("/static/man_and_woman_plan.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    -webkit-background-size:cover;
+    background-size:cover;
+    margin:0px -15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#banner-content{
+    flex: 1 1 auto;
+    margin-top:30px;
+}
+
+#workPage .faq{
+    margin-bottom:25px;
+}
+
+
+#workPage .faq h4{
+    margin:25px 0px 5px;
+}

@@ -8,45 +8,45 @@
 
 {% block navbar %}
     <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand leo-title sp-font" href="{% url "estate:index"%}"><i class="fa fa-home fa-lg"></i> <span style="color:#2c3e50">leo</span><span>altmann</span></a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url "estate:estate" %}">Buy</a></li>
-                <li><a href="{% url "estate:about" %}">Sell</a></li>
-                <li><a href="{% url "estate:about" %}">How it works?</a></li>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand leo-title sp-font" href="{% url "estate:index"%}"><i class="fa fa-home fa-lg"></i> <span style="color:dodgerblue">A</span><span>ltissimmo</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url "estate:estate" %}">Acheter</a></li>
+                    <li><a href="{% url "estate:sell" %}">Vendre</a></li>
+                    <li><a href="{% url "estate:how_it_works" %}">Comment ça marche?</a></li>
+                    <li><a><i class="fa fa-phone"></i> 01 23 56 78 45</a></li>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">More <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="{% url "estate:about" %}">about</a></li>
-                        <li><a href="{% url "estate:about" %}">news</a></li>
-                        <li><a href="{% url "estate:contact" %}">contact</a></li>
-                    </ul>
-                </li>
-                {% if user.is_anonymous %}
-                    <li><a href="{% url 'auth_login' %}">Login</a></li>
-                {% else %}
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Profile <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Plus <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{% url "profile" %}">dashboard</a></li>
-                            <li><a href="{% url "auth_logout" %}">logout</a></li>
+                            <li><a href="{% url "estate:about" %}">à propos de nous</a></li>
+                            <li><a href="{% url "estate:contact" %}">contactez nous</a></li>
                         </ul>
                     </li>
-                {% endif %}
-            </ul>
+                    {% if user.is_anonymous %}
+                        <li><a href="{% url 'auth_login' %}">Login</a></li>
+                    {% else %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ user }} <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{% url "profile" %}">dashboard</a></li>
+                                <li><a href="{% url "auth_logout" %}">logout</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 {% endblock %}
 {% block content %}
 
@@ -54,36 +54,94 @@
         <div class="col-sm-12">
             <div class="banner">
                 <div id="banner-content" class="sp-font">
-                    <div class="col-sm-4">
-                        <h1 class="sp-font">Contact Us</h1>
+                    <div class="col-sm-4 col-sm-offset-8 hidden-xs">
+                        <h1 class="sp-font pull-right text-right " style="color:#1c2b36">Contactez Nous</h1>
+                    </div>
+                    <div class="col-xs-12 visible-xs">
+                        <h1 class="sp-font" style="color:#1c2b36">Contactez Nous</h1>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
-    <div class="row" style="background-color: whitesmoke">
-        <div class="col-sm-4 col-sm-offset-4">
+    <div class="row">
+        <div class="col-sm-6">
             <div class="contact-pane">
-                <h1 class="sp-font text-center">Do you have any Questions</h1>
-            <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda debitis dolore iure magni maiores mollitia, odio quam? A facilis ipsam ut voluptates voluptatum. Atque aut earum eligendi eveniet minus repellendus?</p>
-                <div class="form-pane">
-                    <form action="" method="post">
-                        {% csrf_token %}
-                        {% bootstrap_field form.first_name addon_before='<i class="fa fa-user"></i>' %}
-                        {% bootstrap_field form.last_name addon_before='<i class="fa fa-user"></i>' %}
-                        {% bootstrap_field form.email addon_before='<i class="fa fa-envelope"></i>' %}
-                        {% bootstrap_field form.email addon_before='<i class="fa fa-phone"></i>' %}
-                        {% bootstrap_field form.subject addon_before='<i class="fa fa-envelope-open"></i>' %}
-                        {% bootstrap_field form.message %}
-                        {% buttons %}
-                            <input type="submit" value="Submit Request" class="btn btn-primary">
-                        {% endbuttons %}
-                    </form>
-                </div>
+                <h1 class="sp-font text-center">Avez-vous des questions?</h1>
 
+                <ul>
+                    <li>Une suggestion à faire ?</li>
+                    <li>Une proposition commerciale ?</li>
+                    <li>Une question sur les biens en vente ?</li>
+                    <li>Une question sur le processus de vente ou d'achat ?</li>
+                    <li>Une autre question ?</li>
+
+                </ul>
+                <div id="contactInfo">
+                    <div class="text-center" ><i class="fa fa-send fa-2x"></i></div>
+                    <p class="text-center lead"> Posez les nous à contact@altissimmo.fr ou en remplissant le formulaire</p>
+                </div>
             </div>
 
+        </div>
+        <div class="col-sm-6">
+            <div class="form-pane">
+                <h3>Formulaire de contact</h3>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div style="margin:20px 10px;">
+                                    {% bootstrap_field form.first_name form_group_class="" addon_before='<i class="fa fa-user"></i>' %}
+                                    <p id="firstNameError" class="text-danger form-field-error"></p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div style="margin:20px 10px;">
+                                    {% bootstrap_field form.last_name form_group_class="" addon_before='<i class="fa fa-user"></i>' %}
+                                    <p id="lastNameError" class="text-danger form-field-error"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-6">
+                                <div style="margin:20px 10px;">{% bootstrap_field form.email form_group_class="" addon_before='<i class="fa fa-envelope"></i>' %}
+                                    <p id="emailError" class="text-danger form-field-error"></p>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div style="margin:20px 10px;">
+                                    {% bootstrap_field form.phone_number form_group_class="" addon_before='<i class="fa fa-phone"></i>' %}
+                                    <p id="phoneNumberError" class="text-danger form-field-error"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div style="margin:20px 10px;">{% bootstrap_field form.subject form_group_class="" %}</div>
+                                <p id="subjectError" class="text-danger form-field-error"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div style="margin:20px 10px;">{% bootstrap_field form.message form_group_class="" %}
+                                    <p id="messageError" class="text-danger form-field-error"></p></div>
+                            </div>
+                        </div>
+                        {% buttons %}
+                            <div class="">
+                                <input type="submit" value="Soumettre" class="btn btn-primary">
+                            </div>
+
+                        {% endbuttons %}
+
+                    </div>
+
+                </form>
+            </div>
         </div>
     </div>
 {% endblock content %}

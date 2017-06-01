@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="746px" height="430px" viewBox="0 0 746 430" enable-background="new 0 0 746 430" xml:space="preserve">
+<path fill="#0071BC" d="M532,138c0,3.313-2.687,6-6,6H219c-3.313,0-6-2.687-6-6V89c0-3.313,2.687-6,6-6h307c3.313,0,6,2.687,6,6V138
+	z"/>
+<path fill="#0071BC" d="M532,424c0,3.313-2.687,6-6,6H219c-3.313,0-6-2.687-6-6v-49c0-3.313,2.687-6,6-6h307c3.313,0,6,2.687,6,6
+	V424z"/>
+<path fill="#0071BC" d="M195,346c0,3.313-1.515,6-3.541,6H3.67C1.644,352,0,349.313,0,346v-49c0-3.313,1.644-6,3.67-6h187.789
+	c2.026,0,3.541,2.687,3.541,6V346z"/>
+<path fill="#0071BC" d="M746,346c0,3.313-1.515,6-3.541,6H554.67c-2.026,0-3.67-2.687-3.67-6v-49c0-3.313,1.644-6,3.67-6h187.789
+	c2.026,0,3.541,2.687,3.541,6V346z"/>
+<path fill="#0071BC" d="M532,38.421c0,2.314-2.187,4.579-5.5,4.579h-307c-3.313,0-6.5-2.264-6.5-4.579V4.191
+	C213,1.877,216.187,0,219.5,0h307c3.313,0,5.5,1.877,5.5,4.191V38.421z"/>
+<text transform="matrix(1 0 0 1 267.5708 26.7603)" fill="#FFFFFF" font-family="'Roboto'" font-size="18">Estimation du prix du bien</text>
+<rect x="213" y="184" fill="none" stroke="#0071BC" stroke-width="4" stroke-miterlimit="10" width="319" height="49"/>
+<g>
+	<text transform="matrix(1 0 0 1 267.3477 213.7603)" fill="#0071BC" font-family="'Roboto'" font-size="18">Choix du mandat de vente</text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 235.1216 108.96)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Roboto'" font-size="18">Prix estimé en phase ou non avec </tspan><tspan x="76.245" y="21.6" fill="#FFFFFF" font-family="'Roboto'" font-size="18">le prix souhaité</tspan></text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 28.5522 315.9609)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Roboto'" font-size="18">Mandat exclusif  3</tspan><tspan x="-1.868" y="21.6" fill="#FFFFFF" font-family="'Roboto'" font-size="18"> mois à prix estimé</tspan></text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 257.1299 394.7988)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Roboto'" font-size="18">Mandat exclusif 2 ans à prix </tspan><tspan x="-26.71" y="21.6" fill="#FFFFFF" font-family="'Roboto'" font-size="18">souhaité avec commission variable</tspan></text>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 582.4727 315.9609)"><tspan x="0" y="0" fill="#E6E6E6" font-family="'Roboto'" font-size="18">Mandate Simple</tspan><tspan x="11.904" y="21.6" fill="#E6E6E6" font-family="'Roboto'" font-size="18"> à prix estimé</tspan></text>
+</g>
+<line fill="none" stroke="#0071BC" stroke-width="3" stroke-miterlimit="10" x1="372.5" y1="238" x2="372.5" y2="362"/>
+<line fill="none" stroke="#0071BC" stroke-width="3" stroke-miterlimit="10" x1="372.5" y1="147" x2="372.5" y2="179"/>
+<line fill="none" stroke="#0071BC" stroke-width="3" stroke-miterlimit="10" x1="372.5" y1="47" x2="372.5" y2="77"/>
+<line fill="none" stroke="#0071BC" stroke-width="3" stroke-miterlimit="10" x1="648" y1="269.5" x2="98" y2="269.5"/>
+<line fill="none" stroke="#0071BC" stroke-width="3" stroke-miterlimit="10" x1="97.5" y1="268" x2="97.5" y2="288"/>
+<line fill="none" stroke="#0071BC" stroke-width="3" stroke-miterlimit="10" x1="648.5" y1="268" x2="648.5" y2="288"/>
+</svg>

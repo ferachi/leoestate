@@ -1,0 +1,19 @@
+#downloadPage{
+    background-image: url("/static/agreement.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    -webkit-background-size:cover;
+    background-size:cover;;
+    margin:0px -15px;
+    /*width : 100vw;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:50px 10px 20px 20px;
+    color:whitesmoke;
+}
+
+
+#downloadPage #successDiv{
+    display: none;
+}
