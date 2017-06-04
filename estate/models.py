@@ -140,19 +140,6 @@ class OtherField(models.Model):
 		unique_together = ['field_name', 'field_type', 'field_value']
 
 
-# class RentablePlace(Place):
-# 	TYPES = (
-# 		('m', 'Month'),
-# 		('y', 'Year'),
-# 		('w', 'Week'),
-# 		('d', 'Day')
-# 	)
-# 	duration = models.PositiveIntegerField()
-# 	is_rented = models.BooleanField(default=False)
-# 	duration_type = models.CharField(max_length=1, choices=TYPES, default='m')
-# 	total_duration_months = models.PositiveIntegerField(null=True, blank=True)
-
-
 class BuyablePlace(Place):
 	is_sold = models.BooleanField(default=False)
 

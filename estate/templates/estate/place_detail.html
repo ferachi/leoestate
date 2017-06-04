@@ -161,16 +161,18 @@
 
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h4>téléchargement</h4>
+                                
                                 <form id="myDownloadForm" method="post" action="{% url 'estate:download_form' %}">
                                     {% csrf_token %}
                                     {{ download_form }}
 
                                 </form>
                                 {% if download_file %}
-                                    <a style="color:whitesmoke" type="button" class="btn btn-info" href="{{ download_file.document.upload.url}}"> téléchargement </a>
+                                <h4>votre téléchargement est prêt</h4>
+                                    <a style="color:whitesmoke" type="button" class="btn btn-info" href="{{ download_file.document.upload.url}}"> télécharger le document</a>
                                 {% else %}
-                                    <a style="color:whitesmoke"  id="downloadBtn" type="button" class="btn btn-info" href="{% url 'estate:download' %}"> Termes de téléchargement </a>
+                                <h4>télécharger des documents de propriété</h4>
+                                    <a style="color:whitesmoke"  id="downloadBtn" type="button" class="btn btn-info" href="{% url 'estate:download' %}">  télécharger </a>
                                 {% endif %}
                             </div>
                         </div>
@@ -226,10 +228,10 @@
                     <div class="info-pane text-center text-primary">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <h4>For more information</h4>
+                                <h4>Pour plus d'informations</h4>
                                 <button data-toggle="modal" data-target="#infoModal" id="infoBtn" class="btn btn-primary"> Réserver une visite </button>
-                                <h4 class="sp-bold">OR</h4>
-                                <p class="">Call us on 123XXXXX</p>
+                                <h4 class="sp-bold">OU</h4>
+                                <p class="">Appelez nous sur 123XXXXX</p>
                             </div>
                         </div>
                     </div>

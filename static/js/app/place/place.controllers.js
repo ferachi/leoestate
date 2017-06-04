@@ -1,6 +1,6 @@
 var app = angular.module('place.controllers', []);
 
-app.controller('PlaceListCtrl', ['places','$scope','$filter', 'options',function(places,$scope,$filter, options){
+app.controller('PlaceListCtrl', ['places','$scope','$log', 'options',function(places,$scope,$log, options){
 	$scope.title = "Places";
     $scope.places = places;
     $scope.options = options;
@@ -10,7 +10,6 @@ app.controller('PlaceListCtrl', ['places','$scope','$filter', 'options',function
         $scope.isList = isList;
         $scope.place = $scope.isList ? {} : place;
     };
-    
 	$scope.$watch('searchExp', function(n,o){
 		console.log('hello');
 	});

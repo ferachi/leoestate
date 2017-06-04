@@ -8,18 +8,6 @@ class AddressInline(admin.StackedInline):
 	model = Address
 
 
-# @admin.register(RentablePlace)
-# class RentablePlaceAdmin(admin.ModelAdmin):
-# 	inlines = [
-# 		AddressInline
-# 	]
-
-@admin.register(Place)
-class PlaceAdmin(admin.ModelAdmin):
-	inlines = [
-		AddressInline
-	]
-
 @admin.register(BuyablePlace)
 class BuyablePlaceAdmin(admin.ModelAdmin):
 	inlines = [

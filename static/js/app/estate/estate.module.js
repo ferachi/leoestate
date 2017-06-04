@@ -19,7 +19,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
 		controllerAs : 'ctrl',
 		templateUrl:'/static/place/templates/place_list.html',
 		resolve : {
-			places : function(PlacesLoader){
+			places : function(PlacesLoader,$window){
 				return PlacesLoader();
 			},
 			options : function(OptionsLoader){

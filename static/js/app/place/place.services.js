@@ -42,9 +42,11 @@ app.factory('PlacesLoader', ['$q','Place', function($q,Place){
 	return function(){
 		var deferred = $q.defer();
 		Place.query(function(places){
+            alert('resolved');
 			deferred.resolve(places);
 		},
 		function(){
+            alert('no resolution');
 			deferred.reject('Unable to load the properties, try refreshing.');
 		});
 		return deferred.promise;
