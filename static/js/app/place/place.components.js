@@ -332,7 +332,6 @@ app.controller('MapCtrl', ['$filter','$scope','$interval', '$http',function($fil
             $scope.places = filter(self.places,self.searchExp);
         },10);
         $scope.$watchCollection('places',function(n,o){
-            console.log(n==o)
             if(n !== o) {
                 _places = [];
                 var ville;
@@ -362,7 +361,6 @@ app.controller('MapCtrl', ['$filter','$scope','$interval', '$http',function($fil
                     var sameZip = _.every(_places,function(place){
                         return place.zip == zip;
                     });
-                    console.log(sameCity, sameZip);
                     if(sameCity){
                         ville = _.findWhere(villes, {place:city});
                     }
@@ -398,7 +396,6 @@ app.controller('MapCtrl', ['$filter','$scope','$interval', '$http',function($fil
                     latCenter = 45;
                     longCenter = 5;
                 }
-                console.log(_places,latCenter, longCenter);
                 var center = {lat: latCenter, lng: longCenter};
                 var mapOptions = {
                     zoom: 10,

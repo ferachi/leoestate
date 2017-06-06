@@ -5,10 +5,10 @@
 
 
 .banner{
-    min-height:350px;
-    background-image: url("/static/man_and_woman_plan.jpg");
+    min-height:400px;
+    background-image: url("/static/smiling_woman.jpg");
     background-repeat: no-repeat;
-    background-position: 50% 100%;
+    background-position: 50% 20%;
     -webkit-background-size:cover;
     background-size:cover;
     margin:0px -15px;

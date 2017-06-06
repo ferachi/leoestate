@@ -76,15 +76,14 @@
             $property.val($propertyChoices.find('option:selected').val());
             $(".download-btn").click(function (evt){
                 evt.preventDefault();
+                var $btn = $(evt.currentTarget);
                 $("#id_is_downloaded").val(true);
-                $downloadForm.submit();
-            });
-            var $downloadForm = $("#myDownloadForm");
-            $downloadForm.submit(function(evt){
-                evt.preventDefault();
+                var $downloadForm = $("#myDownloadForm");
+
                 var data = $downloadForm.serialize();
                 $.post($downloadForm.attr('action'),data, function(_data){
                     if(_data.success){
+                        window.location = $btn.attr('href');
                         $("#downloadDiv").hide();
                         $("#successDiv").show();
                     }

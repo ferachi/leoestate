@@ -163,15 +163,15 @@
       <column name="land_area" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="no_bathrooms" sqlType="VARCHAR(1)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="area" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="price" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="address" sqlType="VARCHAR(400)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="postal_code" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="city" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
-      <column name="year_constructed" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="selling_status" sqlType="VARCHAR(1)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="facilities" sqlType="VARCHAR(300)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="booking_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <column name="client_type" sqlType="VARCHAR(2)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
-      <column name="price" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="year_constructed" sqlType="INTEGER UNSIGNED" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
       <foreign-key name="#FAKE_estate_clientproperty_1" columns="booking_id" ref-table="estate_bookingschedule" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <index name="estate_clientproperty_b0060af7" unique="true" columns="booking_id"/>
@@ -189,12 +189,9 @@
       <column name="is_validated" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="property_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="user_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
-      <column name="document_id" sqlType="INTEGER" precision="0" scale="-1" nullable="true" jdbcType="4"/>
       <primary-key columns="id"/>
-      <foreign-key name="#FAKE_estate_formdownload_1" columns="document_id" ref-table="estate_propertydocument" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_estate_formdownload_2" columns="user_id" ref-table="estate_userprofile" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <foreign-key name="#FAKE_estate_formdownload_3" columns="property_id" ref-table="estate_place" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
-      <index name="estate_formdownload_e7fafc10" unique="true" columns="document_id"/>
+      <foreign-key name="#FAKE_estate_formdownload_1" columns="user_id" ref-table="estate_userprofile" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_estate_formdownload_2" columns="property_id" ref-table="estate_place" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <index name="estate_formdownload_e8701ad4" unique="true" columns="user_id"/>
       <index name="estate_formdownload_6bb837ff" unique="true" columns="property_id"/>
     </table>
@@ -255,6 +252,7 @@
       <column name="upload_time" sqlType="DATETIME" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="place_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <column name="upload_by_id" sqlType="INTEGER" precision="0" scale="-1" nullable="false" jdbcType="4"/>
+      <column name="is_downloaded" sqlType="BOOL" precision="0" scale="-1" nullable="false" jdbcType="4"/>
       <primary-key columns="id"/>
       <foreign-key name="#FAKE_estate_propertydocument_1" columns="upload_by_id" ref-table="estate_userprofile" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
       <foreign-key name="#FAKE_estate_propertydocument_2" columns="place_id" ref-table="estate_place" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>

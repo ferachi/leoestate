@@ -3,7 +3,7 @@ from django.urls import reverse
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Place, PropertyType, Facility, OtherField, Place, UserProfile, BookingSchedule, BookingDate
+from .models import Place, PropertyType, Facility, OtherField, Place, UserProfile, BookingSchedule, BookingDate, PropertyDocument
 from .serializers import PlaceSerializer
 from django.views.generic import TemplateView, FormView, DetailView
 from django.views.generic.edit import ProcessFormView, FormMixin
@@ -237,6 +237,23 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 		return super(DownloadView, self).get_context_data(**kwargs)
 
 
+class DownloadedFilesView(APIView):
+	def get(self, request, format=None):
+		id = request.query_params.get('id')
+		context = dict()
+		try:
+			file = PropertyDocument.objects.get(id=id)
+			file.is_downloaded = True
+			file.save()
+			context['message'] = "Download Successful"
+			context['status'] = "Success"
+			context['success'] = True
+		except PropertyDocument.DoesNotExist:
+			context['status'] = "Failed"
+			context['success'] = False
+			context['message'] = "Property Document does not exist"
+		return Response(context)
+
 class PropertyOptions(APIView):
 	def get(self, request, format=None):
 		property_types = PropertyType.objects.distinct().values('id', 'name')
@@ -282,6 +299,11 @@ class FormDownloadView(FormView):
 
 	def form_invalid(self, form):
 		return JsonResponse({'status': 'Failed', 'message': form.errors.as_json(), 'success': False})
+
+
+class DownloadFilesView(DetailView):
+	model = Place
+	template_name = 'estate/download_files_page.html'
 
 
 def logout(request):

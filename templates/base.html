@@ -18,16 +18,19 @@
 
     <div class="row">
         <div class="col-sm-12">
-        <div id="user" {% if user.is_authenticated %}data-is-authenticated="true" data-user-id="{{ user.pk }}" {% else %}data-is-authenticated="false" {% endif %}></div>
-            {% block content %}
-            {% endblock content %}
+            <div id="user" {% if user.is_authenticated %}data-is-authenticated="true" data-user-id="{{ user.pk }}" {% else %}data-is-authenticated="false" {% endif %}></div>
+            <div class="base-content">
+                {% block content %}
+                {% endblock content %}
+            </div>
+
         </div>
     </div>
 </div>
 {% block footer %}
-<div class="footer text-center">
-    <p> <i class="fa fa-copyright "></i> 2017 Altissimmo - tous les droits sont réservés.</p>
-</div>
+    <div class="footer text-center">
+        <p> <i class="fa fa-copyright "></i> 2017 Altissimmo - tous les droits sont réservés.</p>
+    </div>
 {% endblock footer %}
 {% block scripts %}
     {% include "partials/scripts.html" %}

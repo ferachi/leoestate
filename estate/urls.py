@@ -17,6 +17,8 @@ urlpatterns = [
 	url(r'^vendre/$', views.SellView.as_view(), name="sell"),
 	url(r'^télécharger/$', views.DownloadView.as_view(), name="download"),
 	url(r'^download/form/$', views.FormDownloadView.as_view(), name="download_form"),
+	url(r'^download/files/(?P<slug>[\w-]+)/$', views.DownloadFilesView.as_view(), name="download_files"),
+	url(r'^downloaded/files/$', views.DownloadedFilesView.as_view(), name="downloaded_files"),
 	url(r'^comment-ca-marche/$', views.WorkView.as_view(), name="how_it_works"),
 	url(r'^client-property/$', views.ClientPropertyFormView.as_view(), name="client_property"),
 	url(r'^api/', include(api_patterns)),

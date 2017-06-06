@@ -227,13 +227,14 @@ class FormDownload(models.Model):
 	property = models.ForeignKey(Place)
 	is_downloaded = models.BooleanField(default=False)
 	is_validated = models.BooleanField(default=False)
-	document = models.ForeignKey('PropertyDocument', null=True)
+	# document = models.ForeignKey('PropertyDocument', null=True)
 
 
 class PropertyDocument(models.Model):
 	place = models.ForeignKey('Place', on_delete=models.CASCADE, related_name='documents')
 	upload_by = models.ForeignKey('UserProfile')
 	document_name = models.CharField(max_length=50)
+	is_downloaded = models.BooleanField(default=False)
 	upload = models.FileField()
 	upload_time = models.DateTimeField(auto_now_add=True)
 
@@ -276,7 +277,7 @@ class ClientProperty(models.Model):
 	address = models.CharField("Nom de la rue", max_length=400)
 	postal_code = models.PositiveIntegerField("Code postal")
 	city = models.CharField("Ville", max_length=100)
-	year_constructed = models.PositiveIntegerField("Année de construction", max_length=4)
+	year_constructed = models.PositiveIntegerField("Année de construction")
 	selling_status = models.CharField("Envisagez-vous de vendre ce bien ?",max_length=1, choices=SELLING_STATUS, default='a')
 	facilities = models.CharField(max_length=300, blank=True)
 	booking = models.ForeignKey('BookingSchedule', related_name='client_properties', null=True, blank=True, on_delete=models.DO_NOTHING)

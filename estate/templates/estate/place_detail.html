@@ -161,19 +161,22 @@
 
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                
                                 <form id="myDownloadForm" method="post" action="{% url 'estate:download_form' %}">
                                     {% csrf_token %}
                                     {{ download_form }}
-
                                 </form>
+                                {% if user.is_authenticated %}
                                 {% if download_file %}
                                 <h4>votre téléchargement est prêt</h4>
-                                    <a style="color:whitesmoke" type="button" class="btn btn-info" href="{{ download_file.document.upload.url}}"> télécharger le document</a>
+                                    <a style="color:whitesmoke" type="button" class="btn btn-info" href="{% url 'estate:download_files' slug=place.slug %}"> télécharger le document</a>
                                 {% else %}
                                 <h4>télécharger des documents de propriété</h4>
                                     <a style="color:whitesmoke"  id="downloadBtn" type="button" class="btn btn-info" href="{% url 'estate:download' %}">  télécharger </a>
                                 {% endif %}
+                            {% else %}
+                                    <h4>télécharger des documents de propriété</h4>
+                                    <a style="color:whitesmoke" type="button" class="btn btn-info" href="{% url 'estate:download' %}">  télécharger </a>
+                            {% endif %}
                             </div>
                         </div>
                     </div>
@@ -199,7 +202,6 @@
                                                                             <i class="fa fa-paper-plane fa-lg"></i> envoyer le message
                                                                         </button>
                                                                     </div>
-
                                                                 </div>
                                                             </div>
                                                         </form>
