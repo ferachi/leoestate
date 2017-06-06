@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'estate/css/download_files_page.css' %}">
+{% endblock links %}
+
+{% block content %}
+    <div class="row" id="downloadFiles">
+        <div class="col-sm-12">
+            <div class="banner">
+                <div id="banner-content" class="sp-font">
+                    <div class="col-sm-4">
+                        <div id="headers">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8 col-sm-offset-2">
+            <h2 class="text-center">{{ place }} documents de propriété</h2>
+        </div>
+        <div class="col-sm-6 col-sm-offset-3">
+
+            <p class="lead text-center text-info">Votre formulaire a été validé et vos documents sont maintenant prêts. </p>
+            <p class="text-center">Téléchargez tout document en cliquant sur le bouton de téléchargement.</p>
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>no</th>
+                    <th class="text-center">nom du document</th>
+                    <th class="text-center">télécharger</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                {% for document in place.documents.all %}
+                    <tr>
+                        <td style="vertical-align: middle;">{{ forloop.counter }}</td>
+                        <td class="text-center" style="vertical-align: middle;">{{ document.document_name }}</td>
+                        {% if not document.is_downloaded %}
+                            <td class="text-center"><a data-id="{{ document.id }}" data-url="{% url 'estate:downloaded_files' %}" class="btn btn-info download-btn" href="{{ document.upload.url }}">télécharger</a></td>
+                        {% else %}
+                            <td class="text-center"><a class="btn btn-success" href="{{ document.upload.url }}">téléchargé</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}
+
+
+{% block scripts %}
+    {{ block.super }}
+    <script>
+        $(function(){
+            $(".download-btn").click(function(evt){
+                evt.preventDefault();
+
+                var $btn = $(evt.currentTarget);alert($btn.attr('href'))
+                var id = $btn.data('id');
+                var url = $btn.data('url');
+                $.get(url,{id:id},function(_data){
+                    $btn.toggleClass('btn-info btn-success');
+                    window.location = $btn.attr('href');
+                });
+            });
+
+        });
+    </script>
+{% endblock scripts %}

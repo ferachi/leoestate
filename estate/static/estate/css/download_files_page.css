@@ -1,0 +1,17 @@
+#downloadFiles .banner {
+    height: 300px;
+    background-image: url("/static/man_and_woman_plan.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 100%;
+    -webkit-background-size: cover;
+    background-size: cover;
+    margin: 0px -15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a242f;
+}
+
+#downloadFiles{
+    min-height:93vh;
+}
