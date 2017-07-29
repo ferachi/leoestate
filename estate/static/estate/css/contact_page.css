@@ -3,17 +3,24 @@
     background-image: url("/static/man_and_woman.jpg");
     background-repeat: no-repeat;
     background-position: 50% 25%;
-    -webkit-background-size: cover;
     background-size: cover;
     margin: 0px -15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     background-color: #1a242f;
 }
 
 #banner-content {
-    flex: 1 1 auto;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
 }
 
 #banner-content h1 {
@@ -69,7 +76,9 @@
 
     .banner {
         height: 400px;
-        align-items: stretch;
+        -webkit-box-align: stretch;
+            -ms-flex-align: stretch;
+                align-items: stretch;
     }
     #banner-content {
         margin-top: 40px;

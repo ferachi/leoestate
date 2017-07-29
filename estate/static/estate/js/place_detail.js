@@ -55,7 +55,6 @@ $(function(){
 
     var selectedDate;
     $.get('/api/schedules/', function(data){
-        console.log(data, "DATA")
         var dates = [];
 
         data.schedules.forEach(function(v){
@@ -65,7 +64,6 @@ $(function(){
         dates.forEach(function (m,i) {
             var key = m.format('DD/MM/YYYY');
             var val = m.format('h:mm A');
-            console.log(val);
             if(dateGroup[key]){
                 dateGroup[key].push(val);
             }else{
@@ -93,7 +91,6 @@ $(function(){
 
             $('#notSelected').hide();
             $('#dateSelected').show();
-            console.log(selectedDate);
             $('#id_schedule_date').val(selectedDate.format("YYYY-MM-DD HH:mm:ss"));
             $('#displaySelectedTime strong').text(selectedDate.format("h:mm A"));
             $('#displaySelectedDate strong').text(selectedDate.format("dddd, DD MMMM YYYY"));
@@ -105,7 +102,6 @@ $(function(){
             $('#id_schedule_date').val(selectedDate.format("YYYY-MM-DD HH:mm:ss"));
             $('#displaySelectedTime strong').text(selectedDate.format("h:mm A"));
             $('#displaySelectedDate strong').text(selectedDate.format("dddd, DD MMMM YYYY"));
-            console.log(selectedDate);
         });
 
     });
@@ -120,7 +116,6 @@ $(function(){
 
         var data = $bookingForm.serialize();
         $.post($bookingForm.attr('action'), data, function(data){
-            console.log(data.success)
             if(data.success){
                 $('#formWindow').hide();
                 $('#successWindow').show();
@@ -135,9 +130,8 @@ $(function(){
             }
             else{
 
-                var errors = JSON.parse(data.errors);console.log(errors);
+                var errors = JSON.parse(data.errors);
                 Object.keys(errors).forEach(function(key){
-                    console.log(key);
                     var errorKey = key.replace(/_([a-z])/g,function(match, letter){
                             return letter.toUpperCase();
                         }) + "Error";
@@ -174,7 +168,7 @@ $(function(){
 
 function loadQuestions(){
     var index = 0;
-    var questionCount = 1;
+    var questionCount = 10;
     var rCount;
 
     // show main questions and detach from div

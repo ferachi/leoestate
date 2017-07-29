@@ -3,6 +3,7 @@ var app = angular.module('place.controllers', []);
 app.controller('PlaceListCtrl', ['places','$scope','$log', 'options',function(places,$scope,$log, options){
 	$scope.title = "Places";
     $scope.places = places;
+    $scope.location = {'place':''};
     $scope.options = options;
 	$scope.searchExp = function(){};	// this is where the filter get's it's values from
     $scope.isList = true; // if the property list pane is displayed
@@ -10,9 +11,6 @@ app.controller('PlaceListCtrl', ['places','$scope','$log', 'options',function(pl
         $scope.isList = isList;
         $scope.place = $scope.isList ? {} : place;
     };
-	$scope.$watch('searchExp', function(n,o){
-		console.log('hello');
-	});
 }]);
 
 app.controller('PlaceViewCtrl', ['place',function(place){

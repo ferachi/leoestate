@@ -49,15 +49,18 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="thumb-images">
-                                    <div class="grid">
-                                        {% for image in place.images.all %}
-                                            <a href="" class="grid-item img-btn" data-toggle="modal" data-target="#pictureModal">
-                                                <img data-pos="{{ forloop.counter }}" class="img-responsive" src="{{ image.image.url }}" alt="{{ image.title }}">
-                                            </a>
-                                        {% endfor %}
+                                <div class="images" style="padding:5px 10px; background-color: whitesmoke; margin:0px 0 15px;">
+                                    <div class="thumb-images">
+                                        <div class="grid">
+                                            {% for image in place.images.all %}
+                                                <a href="" class="grid-item img-btn" data-toggle="modal" data-target="#pictureModal">
+                                                    <img data-pos="{{ forloop.counter }}" class="img-responsive" src="{{ image.image.url }}" alt="{{ image.title }}">
+                                                </a>
+                                            {% endfor %}
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -166,17 +169,17 @@
                                     {{ download_form }}
                                 </form>
                                 {% if user.is_authenticated %}
-                                {% if download_file %}
-                                <h4>votre téléchargement est prêt</h4>
-                                    <a style="color:whitesmoke" type="button" class="btn btn-info" href="{% url 'estate:download_files' slug=place.slug %}"> télécharger le document</a>
+                                    {% if download_file %}
+                                        <h4>votre téléchargement est prêt</h4>
+                                        <a style="color:whitesmoke" type="button" class="btn btn-info" href="{% url 'estate:download_files' slug=place.slug %}"> télécharger le document</a>
+                                    {% else %}
+                                        <h4>télécharger des documents de propriété</h4>
+                                        <a style="color:whitesmoke"  id="downloadBtn" type="button" class="btn btn-info" href="{% url 'estate:download' %}">  télécharger </a>
+                                    {% endif %}
                                 {% else %}
-                                <h4>télécharger des documents de propriété</h4>
-                                    <a style="color:whitesmoke"  id="downloadBtn" type="button" class="btn btn-info" href="{% url 'estate:download' %}">  télécharger </a>
-                                {% endif %}
-                            {% else %}
                                     <h4>télécharger des documents de propriété</h4>
                                     <a style="color:whitesmoke" type="button" class="btn btn-info" href="{% url 'estate:download' %}">  télécharger </a>
-                            {% endif %}
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -239,47 +242,50 @@
                     </div>
                     <hr/>
                     <div class="polls">
-                        <h4 class="text-center">Q &amp; A</h4>
-                        {% if user.is_authenticated %}
-                            <div class="form-pane">
-                                <form action="{% url 'estate:property_detail' slug=place.slug %}" method="post" class="form-horizontal">
-                                    {% csrf_token %}
-                                    {% bootstrap_form form %}
-                                    {% buttons %}
-                                        <input type="submit" class="btn btn-success btn-block" value="ask">
-                                    {% endbuttons %}
-                                </form>
-                            </div>
-                        {% endif %}
-                        <hr/>
-                        <div id="qsAndAs">
-                            {% for question in questions.all %}
-
-                                <div id="qAndA" class="main-question">
-                                    <div class="qa-item">
-                                        <p class="content"><span class="header">Q:</span> {{ question.content }}</p>
-                                        {% if user.is_staff %}
-                                            <a href="{% url 'estate:question_detail' place=place.slug pk=question.pk %}" class="action"><i class="fa fa-reply fa-fw"></i> reply</a>
-                                        {% endif %}
-                                    </div>
-                                    <div class="answers">
-                                        {% for answer in question.answers.all|slice:"3" %}
-                                            <div class="qa-item">
-                                                <p class="content"><span class="header">A:</span> {{ answer.content }}</p>
-                                                <p class="extra">{{ answer.user_profile }} | {{ answer.date }}</p>
-                                            </div>
-                                        {% endfor %}
-                                        {% if question.answers.all|length > 3 %}
-                                            <div>
-                                                <a href="{% url 'estate:question_detail' place=place.slug pk=question.pk %}">view all answers</a>
-                                            </div>
-                                        {% endif %}
-                                    </div>
+                        <div class="col-sm-12">
+                            <h4 class="text-center sp-bold">Question et Réponse</h4>
+                            {% if user.is_authenticated %}
+                                <div class="form-pane">
+                                    <form action="{% url 'estate:property_detail' slug=place.slug %}" method="post" class="form-horizontal">
+                                        {% csrf_token %}
+                                        {% bootstrap_form form %}
+                                        {% buttons %}
+                                            <input type="submit" class="btn btn-info btn-block" value="demander">
+                                        {% endbuttons %}
+                                    </form>
                                 </div>
-                            {% endfor %}
+                            {% endif %}
+                            <hr/>
+                            <div id="qsAndAs">
+                                {% for question in questions.all %}
 
+                                    <div id="qAndA" class="main-question">
+                                        <div class="qa-item">
+                                            <p class="content"><span class="header">Q:</span> {{ question.content }}</p>
+                                            {% if user.is_staff %}
+                                                <a href="{% url 'estate:question_detail' place=place.slug pk=question.pk %}" class="action"><i class="fa fa-reply fa-fw"></i> reply</a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="answers">
+                                            {% for answer in question.answers.all|slice:"3" %}
+                                                <div class="qa-item">
+                                                    <p class="content"><span class="header">R:</span> {{ answer.content }}</p>
+                                                    <p class="extra">{{ answer.user_profile }} | {{ answer.date }}</p>
+                                                </div>
+                                            {% endfor %}
+                                            {% if question.answers.all|length > 3 %}
+                                                <div>
+                                                    <a href="{% url 'estate:question_detail' place=place.slug pk=question.pk %}">view all answers</a>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                            <button id="loadQuestionsBtn" class="btn btn-block btn-primary">load more <span id="remainingCount"></span></button>
                         </div>
-                        <button id="loadQuestionsBtn" class="btn btn-block btn-primary">load more <span id="remainingCount"></span></button>
+
                     </div>
                 </div>
             </div>
@@ -298,7 +304,6 @@
             var lng = parseFloat($("#longitude").val());
 
             var placeLatlng = {lat:lat , lng:lng};
-            console.log(placeLatlng);
             // Styles a map in night mode.
             var mapOptions = {
                 zoom: 15,

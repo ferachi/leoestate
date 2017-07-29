@@ -77,7 +77,6 @@ class Address(models.Model):
 	town = models.CharField(max_length=120, blank=True, null=True)
 	zip_code = models.PositiveIntegerField()
 	location = models.CharField(max_length=255)
-	postal_code = models.CharField(max_length=10)
 	latitude = models.DecimalField(max_digits=16, decimal_places=8)
 	longitude = models.DecimalField(max_digits=16, decimal_places=8)
 	place = models.OneToOneField(Place, on_delete=models.CASCADE)
@@ -143,9 +142,9 @@ class OtherField(models.Model):
 class BuyablePlace(Place):
 	is_sold = models.BooleanField(default=False)
 
-	# class Meta:
-	# 	verbose_name = 'Place'
-	# 	verbose_name_plural = 'Places'
+	class Meta:
+		verbose_name = 'Place'
+		verbose_name_plural = 'Places'
 
 
 class Question(models.Model):
@@ -211,8 +210,6 @@ class BookingDate(models.Model):
 	is_expired.short_description = "is_expired"
 
 	def save(self, *args, **kwargs):
-		print(dir(self.scheduled_date))
-		print(self.scheduled_date.date())
 		if self.scheduled_date.date() < datetime.now().date():
 			raise ValidationError(_('Error in date selection, Select a date greater than today.'), "invalid")
 		else:
@@ -227,7 +224,8 @@ class FormDownload(models.Model):
 	property = models.ForeignKey(Place)
 	is_downloaded = models.BooleanField(default=False)
 	is_validated = models.BooleanField(default=False)
-	# document = models.ForeignKey('PropertyDocument', null=True)
+
+	#define a tostring method
 
 
 class PropertyDocument(models.Model):

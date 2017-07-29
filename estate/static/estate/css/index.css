@@ -7,17 +7,24 @@
     background-image: url("/static/home-x.jpg");
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    -webkit-background-size:cover;
     background-size:cover;;
     margin:0px -15px;
     /*width : 100vw;*/
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 #banner-content{
-    flex: 1 1 auto;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
     margin-top:-130px;
 }
 #banner-content .headers{
@@ -58,12 +65,18 @@
     padding:0px 15px;
 }
 .ad-bar > div{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 40%;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .ad-bar > div > i{
-    flex: 1 1 100%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
     font-size:6em;
 }
 

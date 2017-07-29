@@ -17,7 +17,8 @@ app.component('search', {
     controller:'SearchCtrl',
     bindings : {
         searchExp : '=',
-        options : '='
+        options : '=',
+        mlocation:'=location'
     }
 });
 
@@ -72,10 +73,10 @@ app.controller('SearchBarCtrl', [function(){
             for(var j=0; j < Object.keys(values).length ; j++)
             {
                 var value = Object.keys(values)[j];
-                if(values['buyableplace'] && !'buyableplace'.startsWith(self.purchaseType)) return false;
-                else if(values['rentableplace'] && !'rentableplace'.startsWith(self.purchaseType)) return false;
+                if(values['buyableplace'] && !_.startsWith(values['buyableplace'],self.purchaseType)) return false;
+                else if(values['rentableplace'] && !_.startsWith(values['rentableplace'] ,self.purchaseType)) return false;
 
-                if(!values["address"]['location'].startsWith(self.location)) return false;
+                if(!_.startsWith(values["address"]['location'],self.location)) return false;
                 return true
             }
 
@@ -98,7 +99,8 @@ app.component('searchPane', {
     controller:'SearchPaneCtrl',
     bindings : {
         searchExp : '=',
-        options : '='
+        options : '=',
+        mlocation:'=location'
     }
 });
 
@@ -123,7 +125,7 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
         angular.copy(this.options['facilities'] , this._facilityOptions);
         angular.copy(this.options['propertyTypes'] , this._propertyTypeOptions);
         angular.copy(this.options['otherFields'] , this._otherOptions);
-        this._noOfRoomOptions = [{id:1, val:"1"},{ id:2, val:"2"}, {id:3, val : "3"}, {id:4, val:"4"}, {id:5, val:"5"}, {id:6, val:"6+"}];
+        this._noOfRoomOptions = [{id:1, val:"1+"},{ id:2, val:"2+"}, {id:3, val : "3+"}, {id:4, val:"4+"}, {id:5, val:"5+"}, {id:6, val:"6+"}];
 
         this.purchaseType = "";
         this.purchaseTypes = [
@@ -148,19 +150,20 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
         this.area = "";
         this.rooms ="";
         this.priceMinMax = [0,1000000];
-
-        self.searchExp  = function(values,index){
+        self.searchExp  = function(values, index){
             var location = parseInt(self.location);
             if(!isNaN(location)){
                 var zipcode = values["address"]['zip_code']+'';
                 var _zip = self.location + '';
-                if(!zipcode.startsWith(_zip)) return false;
+                if(!_.startsWith(zipcode,_zip)) return false;
             }
             else{
-                if(!values["address"]['location'].toLowerCase().startsWith(self.location.toLowerCase())) return false;
+                self.mlocation['location'] = self.location;
+
+                if(!_.startsWith(values["address"]['location'].toLowerCase(), self.location.toLowerCase())) return false;
             }
 
-            if(!values["property_type"].startsWith(self.propertyType)) return false;
+            if(!_.startsWith(values["property_type"], self.propertyType)) return false;
 
             if(self.price[1] < self.priceMinMax[1]){
                 if(self.price[1] < parseInt(values['price'])  || self.price[0] > parseInt(values['price'])) return false;
@@ -171,19 +174,7 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
 
             if(self.area && self.area > parseInt(values['area'])) return false;
 
-            if(self.rooms && self.rooms < 6){
-                if(self.rooms < parseInt(values['no_rooms'])) return false;
-            }
-            else if(self.rooms && self.rooms >= 6){
-                if(self.rooms > parseInt(values['no_rooms'])) return false;
-            }
-
-            // if(self.rooms[1] < self.roomMinMax[1]){
-            //     if(self.rooms[1] < parseInt(values['no_rooms'])  || self.rooms[0] > parseInt(values['no_rooms'])) return false;
-            // }
-            // else{
-            //     if(self.rooms[0] > parseInt(values['no_rooms'])) return false;
-            // }
+            if(self.rooms && self.rooms > parseInt(values['no_rooms']))return false;
 
 
             // returns an array of the  name fields in facilities
@@ -193,28 +184,17 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
             // note: this ensures that a property has all the selected options
             if(self.facilityOptions.length > 0){
                 var _indexes = [];
-                self.facilityOptions.forEach(function(value){
+                _.forEach(self.facilityOptions,function(value){
                     var _index = _facilityValues.indexOf(value);
                     _indexes.push(_index);
                 });
                 if(_indexes.indexOf(-1) != -1) return false;
             }
 
-            // // this works if any property has at least on of the selected facilities
-            // if(self.facilityOptions.length > 0){
-            // 	var _index;
-            // 	self.facilityOptions.forEach(function(value){
-            // 		_index = _facilityValues.indexOf(value);
-            // 		if(_index == -1) return;
-            // 	});
-            // 	if(_indexes == -1) return false;
-            // }
-
             var _optionsValues = utils.valuesToArray(values["other_fields"],'field_name');
             if(self.propertyOptions.length > 0){
                 var _indexes = [];
-                console.log(self.propertyOptions, _optionsValues)
-                self.propertyOptions.forEach(function(value){
+                _.forEach(self.propertyOptions,function(value){
                     var _index = _optionsValues.indexOf(value);
                     _indexes.push(_index);
                 });
@@ -225,11 +205,10 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
     };
 
     this.change = function(){
-        console.log(this.room)
     }
     this.facilitiesChanged = function(){
         var self = this;
-        this._facilityOptions.forEach(function(v,i){
+        _.forEach(self._facilityOptions,function(v,i){
             if("selected" in v){
                 if(v['selected']){
                     if(self.facilityOptions.indexOf(v['name']) === -1)
@@ -248,7 +227,7 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
     }
     this.propertyTypeChanged = function(){
         var self = this;
-        this._propertyTypeOptions.forEach(function(v,i){
+        _.forEach(this._propertyTypeOptions,function(v,i){
             if("selected" in v){
                 if(v['selected']){
                     if(self.propertyTypes.indexOf(v['name']) === -1)
@@ -262,14 +241,13 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
                         self.propertyTypes.splice(index,1);
                     }
                 }
-                console.log(self.propertyTypes);
             }
         });
     }
     this.optionsChanged = function(){
         var self = this;
 
-        this._otherOptions.forEach(function(v,i){
+        _.forEach(this._otherOptions,function(v,i){
             if("selected" in v){
                 if(v['selected']){
                     if(self.propertyOptions.indexOf(v['field_name']) === -1)
@@ -284,7 +262,6 @@ app.controller('SearchPaneCtrl', ['utils',function(utils){
                     }
                 }
             }
-            console.log(self._otherOptions,self.propertyOptions)
         });
     }
 }]);
@@ -303,6 +280,7 @@ app.component('map', {
     bindings:{
         places:"=",
         searchExp : "=",
+        mlocation:'=location'
     }
 });
 
@@ -323,104 +301,143 @@ app.controller('MapCtrl', ['$filter','$scope','$interval', '$http',function($fil
 
         $http.get("/static/location_final.json").then(function(response){
             villes = response.data;
+
+            $scope.places = this.places;
+            $scope.location = this.mlocation;
+            $timeout(function(){
+                $scope.places = filter(self.places,self.searchExp);
+            },10);
+            $scope.$watchCollection('places',function(n,o){
+                if(n !== o) {
+                    _places = [];
+                    var ville;
+                    var mapOptions = {
+                        mapTypeControl: false,
+                    };
+                    _.forEach($scope.places,function (place) {
+                        var lat = parseFloat(place.address.latitude);
+                        var lng = parseFloat(place.address.longitude);
+                        var zip = parseInt(place.address.zip_code);
+                        var location = place.address.location;
+                        var latlng = {lat: lat, lng: lng};
+                        var title = place.title;
+                        var price = place.price;
+                        var slug = place.slug;
+                        var imgUrl = place.image;
+                        _places.push({title: title, latlng: latlng, zip:zip,location:location, image: imgUrl, price: price, slug: slug});
+                    });
+
+                    if(_places.length > 0){
+                        var city = _places[0].location.toUpperCase();
+                        var zip = _places[0].zip;
+
+                        var sameCity = _.every(_places,function(place){
+                            return place.location.toUpperCase() == city;
+                        });
+                        var sameZip = _.every(_places,function(place){
+                            return place.zip == zip;
+                        });
+                        if(sameCity){
+                            ville = _.find(villes, {place:city});
+                        }
+                        else if(sameZip){
+                            ville = _.find(villes, {zip:zip});
+                        }
+                        else{
+                            ville = null;
+                        }
+
+                        // if the location field is not empty
+                        if(ville){
+                            latCenter = ville.latitude;
+                            longCenter = ville.longitude;
+                        }
+                        else{
+                            // location field must be empty or different locations where selected
+                            // latCenter = _places.map(function (place){
+                            //     return place.latlng.lat;
+                            // }).reduce(function (acc, val, index, list) {
+                            //     if (index == list.length - 1) return (acc + val) / list.length;
+                            //     else return acc + val;
+                            // });
+                            // longCenter = _places.map(function (place) {
+                            //     return place.latlng.lng;
+                            // }).reduce(function (acc, val, index, list) {
+                            //     if (index == list.length - 1) return (acc + val) / list.length;
+                            //     else return acc + val;
+                            // });
+
+                            //bourges
+                            latCenter = 47.0833;
+                            longCenter = 2.43333;
+                            mapOptions['zoom'] = 6;
+                        }
+                    }
+                    else{
+                        //paris
+                        latCenter = 47.0833;
+                        longCenter = 2.43333;
+                        mapOptions['zoom'] = 6;
+                    }
+                    //center
+                    mapOptions['center'] = {lat: latCenter, lng: longCenter};
+                    self.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+                    _.forEach(_places,function (place) {
+                        var marker = new google.maps.Marker({
+                            position: place.latlng,
+                            title: place.title,
+                            map: self.map,
+                        });
+                        marker.addListener('click', function () {
+                            infowindow.setContent(contentInfo(place.image, place.title, place.price))
+                            infowindow.open(map, marker);
+                        });
+                    });
+                }
+
+            });
+
+            $scope.$watchCollection('location', function (n, o) {
+                if (n != o){
+                    if (villes && n.location != undefined) {
+                        var location = n['location'].toUpperCase();
+                        var ville = _.find(villes, {place: location});
+                        if (ville) {
+                            latCenter = ville.latitude;
+                            longCenter = ville.longitude;
+                        }
+
+                        var center = {lat: latCenter, lng: longCenter};
+                        var mapOptions = {
+                            zoom: 10,
+                            center: center,
+                            mapTypeControl: false,
+                        };
+
+                        self.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+                        _.forEach(_places, function (place) {
+                            var marker = new google.maps.Marker({
+                                position: place.latlng,
+                                title: place.title,
+                                map: self.map,
+                            });
+                            marker.addListener('click', function () {
+                                infowindow.setContent(contentInfo(place.image, place.title, place.price))
+                                infowindow.open(map, marker);
+                            });
+                        });
+                    }
+                }
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+                maxWidth:200
+            });
+
         }, function(err){
             console.log(err);
-        });
-
-        $scope.places = this.places;
-        $timeout(function(){
-            $scope.places = filter(self.places,self.searchExp);
-        },10);
-        $scope.$watchCollection('places',function(n,o){
-            if(n !== o) {
-                _places = [];
-                var ville;
-                $scope.places.forEach(function (place) {
-                    var lat = parseFloat(place.address.latitude);
-                    var lng = parseFloat(place.address.longitude);
-                    var zip = parseInt(place.address.zip_code);
-                    var location = place.address.location;
-                    var latlng = {lat: lat, lng: lng};
-                    var title = place.title;
-                    var price = place.price;
-                    var slug = place.slug;
-                    var imgUrl = place.image;
-                    _places.push({title: title, latlng: latlng, zip:zip,location:location, image: imgUrl, price: price, slug: slug});
-                });
-
-                if(_places.length > 0){
-
-
-
-                    var city = _places[0].location.toUpperCase();
-                    var zip = _places[0].zip;
-
-                    var sameCity = _.every(_places,function(place){
-                        return place.location == city;
-                    });
-                    var sameZip = _.every(_places,function(place){
-                        return place.zip == zip;
-                    });
-                    if(sameCity){
-                        ville = _.findWhere(villes, {place:city});
-                    }
-                    else if(sameZip){
-                        ville = _.findWhere(villes, {zip:zip});
-                    }
-                    else{
-                        ville = null;
-                    }
-
-                    // if the location field is not empty
-                    if(ville){
-                        latCenter = ville.latitude;
-                        longCenter = ville.longitude;
-                    }
-                    else{
-                        // location field must be empty or different locations where selected
-                        latCenter = _places.map(function (place){
-                            return place.latlng.lat;
-                        }).reduce(function (acc, val, index, list) {
-                            if (index == list.length - 1) return (acc + val) / list.length;
-                            else return acc + val;
-                        });
-                        longCenter = _places.map(function (place) {
-                            return place.latlng.lng;
-                        }).reduce(function (acc, val, index, list) {
-                            if (index == list.length - 1) return (acc + val) / list.length;
-                            else return acc + val;
-                        });
-                    }
-                }
-                else{
-                    latCenter = 45;
-                    longCenter = 5;
-                }
-                var center = {lat: latCenter, lng: longCenter};
-                var mapOptions = {
-                    zoom: 10,
-                    center: center,
-                    mapTypeControl: false,
-                };
-                self.map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-                _places.forEach(function (place) {
-                    var marker = new google.maps.Marker({
-                        position: place.latlng,
-                        title: place.title,
-                        map: self.map,
-                    });
-                    marker.addListener('click', function () {
-                        infowindow.setContent(contentInfo(place.image, place.title, place.price))
-                        infowindow.open(map, marker);
-                    });
-                });
-            }
-
-        });
-
-        var infowindow = new google.maps.InfoWindow({
-            maxWidth:200
         });
 
     };
@@ -507,12 +524,12 @@ app.component('propertyPalette',{
  * @type {Controller}
  * @desc controller for the property palette component
  */
-app.controller('PropertyPaletteController', ["$location",function($location){
+app.controller('PropertyPaletteController', ["$location","$window",function($location,$window){
     this.$onInit = function(){
     }
     this.navToDetail = function(){
-        var path = 'estate/property/'+this.property.slug + '/';
-        window.location = path;
+        var path = '/estate/property/'+this.property.slug + '/';
+        $window.location = path;
     }
 }]);
 
@@ -552,7 +569,7 @@ function Utils(){}
 
 Utils.prototype.valuesToArray = function(collection, key){
     var _results = [];
-    collection.forEach(function(value, index){
+    _.forEach(collection, function(value, index){
         if(typeof value == 'object' && !Array.isArray(value)){
             var keys = Object.keys(value);
             if(keys.indexOf(key) != -1){

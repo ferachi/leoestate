@@ -60,11 +60,12 @@
             $(".download-btn").click(function(evt){
                 evt.preventDefault();
 
-                var $btn = $(evt.currentTarget);alert($btn.attr('href'))
+                var $btn = $(evt.currentTarget);
                 var id = $btn.data('id');
                 var url = $btn.data('url');
                 $.get(url,{id:id},function(_data){
                     $btn.toggleClass('btn-info btn-success');
+                    $btn.text('téléchargé');
                     window.location = $btn.attr('href');
                 });
             });

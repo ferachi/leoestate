@@ -12,10 +12,10 @@ api_patterns = [
 ]
 urlpatterns = [
 	url(r'^$', views.IndexView.as_view(), name="index"),
-	url(r'^à-propos-de-nous/$', views.AboutView.as_view(), name="about"),
+	url(r'^a-propos-de-nous/$', views.AboutView.as_view(), name="about"),
 	url(r'^contact/$', views.ContactView.as_view(), name="contact"),
 	url(r'^vendre/$', views.SellView.as_view(), name="sell"),
-	url(r'^télécharger/$', views.DownloadView.as_view(), name="download"),
+	url(r'^telecharger/$', views.DownloadView.as_view(), name="download"),
 	url(r'^download/form/$', views.FormDownloadView.as_view(), name="download_form"),
 	url(r'^download/files/(?P<slug>[\w-]+)/$', views.DownloadFilesView.as_view(), name="download_files"),
 	url(r'^downloaded/files/$', views.DownloadedFilesView.as_view(), name="downloaded_files"),

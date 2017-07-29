@@ -13,8 +13,6 @@ body{
     z-index:1000;
     width:100%;
     /*background-color: white;*/
-    -webkit-border-radius:0px;
-    -moz-border-radius:0px;
     border-radius:0px;
     margin:0px;
 }

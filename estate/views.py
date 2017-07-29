@@ -1,3 +1,4 @@
+from IPython.lib.editorhooks import emacs
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from rest_framework import generics
@@ -150,15 +151,17 @@ class PlaceInfoFormView(FormView):
 	form_class = PlaceInfoForm
 	template_name = 'estate/place_info_form.html'
 
-	def form_valid(self,form):
-		instance = form.save()
-		return JsonResponse({'success':True, 'message': 'Successfully Booked'})
-		# return HttpResponseRedirect(reverse("estate:property_detail", kwargs={'slug':instance.place.slug}))
+	def form_valid(self, form):
+		instance = form.save(commit=False)
+		try:
+			booking_schedule = BookingSchedule.objects.get(email=instance.email, place=instance.place)
+			return JsonResponse({'success': True, 'message': 'Already Booked'})
+		except BookingSchedule.DoesNotExist:
+			instance.save()
+		return JsonResponse({'success': True, 'message': 'Successfully Booked'})
 
 	def form_invalid(self, form):
-		print(form.errors.as_json())
-		return JsonResponse({'success':False, 'message':'Not Successful', 'errors':form.errors.as_json()})
-		# return super(PlaceInfoFormView, self).form_invalid(form)
+		return JsonResponse({'success': False, 'message': 'Not Successful', 'errors': form.errors.as_json()})
 
 
 class VoteFormView(LoginRequiredMixin, FormView):
@@ -193,7 +196,6 @@ class ClientPropertyFormView(TemplateView, ProcessFormView):
 		context = {}
 		client_form = ClientPropertyForm(request.POST, prefix='client')
 		book_form = PlaceInfoForm(request.POST, prefix='book')
-		print(client_form.data);
 		if client_form.is_valid():
 			client_instance = client_form.save(commit=False)
 			if book_form.is_valid():

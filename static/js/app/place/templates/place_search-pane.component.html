@@ -24,10 +24,10 @@
 
                             <div class="row">
                                 <div class="col-sm-6 text-left">
-                                    <label class="val">&euro;{{$ctrl.price[0]}}</label>
+                                    <label class="val sp-bold">&euro;{{$ctrl.price[0]}}</label>
                                 </div>
                                 <div class="col-sm-6 text-right">
-                                    <label class="val">{{$ctrl.price[1]| currency : '&euro;':0}}+</label>
+                                    <label class="val sp-bold">{{$ctrl.price[1]| currency : '&euro;':0}}+</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -54,7 +54,7 @@
                     <div class="">
                         <div class="search-field">
                             <div class="row text-center">
-                                <label for="area" class="">Surface</label>
+                                <label for="area" class="">Minimum Surface</label>
                                 <hr/>
                             </div>
                             <div>
@@ -133,7 +133,7 @@
                 <div id="showNav" class="text-center">
                         <div class="row">
                             <div class="col-sm-12">
-                                <p id="loadMoreBtn" ng-click="$ctrl.showFacilities = !$ctrl.showFacilities" style="color:orangered">+ Critères Avancés</p>
+                                <p id="loadMoreBtn" class="sp-bold" ng-click="$ctrl.showFacilities = !$ctrl.showFacilities" style="color:rebeccapurple"><i class="fa fa-plus"></i> Critères Avancés</p>
                             </div>
                         </div>
 
@@ -146,7 +146,6 @@
                      <div class="row">
                     <div class="col-sm-6 col-sm-offset-3" >
                         <div class="search-field-extra">
-                            <h5 class="text-center">Facilities</h5>
                             <hr/>
                             <div class="fields">
                                 <div ng-repeat="option in $ctrl._facilityOptions track by option.id" >

@@ -9,7 +9,7 @@
 }
 .search-component .searchBtn{
     padding: 5px 10px;
-    background-color: coral;
+    background-color: rebeccapurple;
     color: white;
     border-radius: 3px;
     cursor:pointer;
@@ -65,7 +65,7 @@
 }
 
 .search-pane-component .search-field label.val{
-    color:coral;
+    color:#1c2b36;
     font-weight: 400;
 }
 
@@ -80,30 +80,44 @@
 
 .search-pane-component .search-field-extra h5{
     margin:10px 0px 0px 0px;
-    color: cadetblue;
+    color: #1c2b36;
 }
 
 .search-pane-component .fields{
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    justify-content: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
 
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+
+        flex-wrap: wrap;
 }
 
 .search-pane-component .fields > div{
-    flex : 1 1 20%;
+    -webkit-box-flex : 1;
+        -ms-flex : 1 1 20%;
+            flex : 1 1 20%;
 }
 
 
 
 .search-pane-component #searchOptions{
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 
 }
 
 .search-pane-component #searchOptions > div{
-    flex:1 1 20%;
+    -webkit-box-flex:1;
+        -ms-flex:1 1 20%;
+            flex:1 1 20%;
     padding:5px;
     margin:0px 5px;
 
@@ -140,11 +154,16 @@
 
 @media screen and (max-width: 768px) {
     .search-pane-component #searchOptions{
+        display:-webkit-box;
+        display:-ms-flexbox;
         display:flex;
-        flex-wrap : wrap;
+        -ms-flex-wrap : wrap;
+            flex-wrap : wrap;
     }
     .search-pane-component #searchOptions > div{
-        flex:1 1 100%;
+        -webkit-box-flex:1;
+            -ms-flex:1 1 100%;
+                flex:1 1 100%;
         padding:0px 5px;
         margin:0px 5px;
     }
@@ -152,6 +171,8 @@
 
 .facilities.ng-enter{
     opacity:0;
+    -webkit-transition: all 0.6s ease-in-out;
+    -o-transition: all 0.6s ease-in-out;
     transition: all 0.6s ease-in-out;
 }
 .facilities.ng-enter.ng-enter-active{

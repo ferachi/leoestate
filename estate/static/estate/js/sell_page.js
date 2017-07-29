@@ -93,7 +93,6 @@ $(function () {
             }
             else{
                 if($btn.attr('id') == 'stepTwoSubmitBtn'){
-                    console.log(data);
                     var errors = JSON.parse(data.errors);
                     Object.keys(errors).forEach(function(key){
                         var errorKey = key.replace(/_([a-z])/g,function(match, letter){
@@ -136,7 +135,6 @@ $(function () {
         dates.forEach(function (m,i) {
             var key = m.format('DD/MM/YYYY');
             var val = m.format('h:mm A');
-            console.log(val);
             if(dateGroup[key]){
                 dateGroup[key].push(val);
             }else{
@@ -164,7 +162,6 @@ $(function () {
 
             $('#notSelected').hide();
             $('#dateSelected').show();
-            console.log(selectedDate);
             $('#id_book-schedule_date').val(selectedDate.format("YYYY-MM-DD HH:mm:ss"));
             $('#displaySelectedTime strong').text(selectedDate.format("h:mm A"));
             $('#displaySelectedDate strong').text(selectedDate.format("dddd, DD MMMM YYYY"));

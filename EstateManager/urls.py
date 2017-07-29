@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 import estate.views as views
 
 urlpatterns = [
-	url(r'^admin/', admin.site.urls),
+	url(r'^admin/admon/', admin.site.urls),
 	url(r'^accounts/profile/', views.ProfileView.as_view(),name='profile'),
 	url(r'^accounts/logout/', views.logout, name='auth_logout'),
 	url(r'^accounts/', include('registration.backends.simple.urls')),

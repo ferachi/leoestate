@@ -3,12 +3,17 @@
     background-image: url("/static/man_and_woman_plan.jpg");
     background-repeat: no-repeat;
     background-position: 50% 100%;
-    -webkit-background-size: cover;
     background-size: cover;
     margin: 0px -15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     background-color: #1a242f;
 }
 

@@ -29,7 +29,6 @@ $(function(){
 
     $likeBtns.each(function (i,e) {
         $(e).click(function(evt){
-            console.log(typeof user.data('isAuthenticated'));
             $clickedBtn = $(evt.currentTarget);
             var id = $(evt.currentTarget).data('id');
             var bool = $(evt.currentTarget).data('bool');

@@ -76,7 +76,7 @@ a.navbar-brand.leo-title:hover{
 }
 
 .sp-bold{
-    font-weight:bold;
+    font-weight:bold !important;
 }
 
 .sp-light{
