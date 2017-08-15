@@ -1,9 +1,8 @@
-from django.contrib import admin
-from .models import *
 from django import forms
+from django.contrib import admin
 from django.utils import timezone
-from datetime import datetime
 
+from estate.models import *
 
 
 class BookingScheduleForm(forms.ModelForm):

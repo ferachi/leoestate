@@ -1,6 +1,6 @@
 from django import template
-from estate.models import Answer
 
+from estate.models import Answer
 
 register = template.Library()
 

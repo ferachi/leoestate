@@ -1,20 +1,18 @@
-from IPython.lib.editorhooks import emacs
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
-from rest_framework import generics
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from .models import Place, PropertyType, Facility, OtherField, Place, UserProfile, BookingSchedule, BookingDate, PropertyDocument
-from .serializers import PlaceSerializer
-from django.views.generic import TemplateView, FormView, DetailView
-from django.views.generic.edit import ProcessFormView, FormMixin
-from .forms import *
+from django.contrib.auth import views as auth_views
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect, JsonResponse
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth import views as auth_views
-from django.core.paginator import Paginator
-from datetime import datetime
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
+from django.views.generic import TemplateView, FormView, DetailView
+from django.views.generic.edit import ProcessFormView, FormMixin
+from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from estate.models import PropertyType, Facility, OtherField, Place, UserProfile, BookingDate, PropertyDocument
+from .forms import *
+from .serializers import PlaceSerializer
 
 
 # Create your views here.

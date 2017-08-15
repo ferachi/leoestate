@@ -1,6 +1,7 @@
 from django import forms
-from .models import Question, Answer, Vote, BookingSchedule, FormDownload, ClientProperty
 from django.utils.translation import ugettext_lazy as _
+
+from estate.models import Question, Answer, Vote, BookingSchedule, FormDownload, ClientProperty
 
 
 class ContactForm(forms.Form):
